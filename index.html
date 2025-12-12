@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPM Nexus - Custom Player Models</title>
+    <!-- Google Fonts: Plus Jakarta Sans for a modern feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            900: '#1e3a8a',
+                        },
+                        mario: '#e11d48', // Rose-600
+                        weegee: '#16a34a', // Green-600
+                        sonic: '#0284c7', // Sky-600
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'hover': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.01)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+        }
+
+        /* Hide scrollbar for carousels but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Smooth transitions */
+        .transition-all-300 {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Custom scrollbar for page */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        
+        .fade-mask-x {
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-slate-50 selection:bg-brand-500 selection:text-white">
+
+    <!-- Universal Navbar -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-slate-200 z-40 flex justify-between items-center px-6 py-3 transition-all duration-300">
+        <div class="flex items-center gap-4">
+            <button id="menu-btn" class="p-2 text-slate-500 hover:bg-slate-100 hover:text-brand-600 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500/20">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+            <div class="flex items-center gap-2 select-none cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="bg-brand-600 text-white p-1.5 rounded-lg shadow-sm">
+                    <i data-lucide="box" class="w-5 h-5"></i>
+                </div>
+                <span class="font-bold text-xl text-slate-900 tracking-tight">CPM Nexus</span>
+            </div>
+        </div>
+        <div class="hidden sm:flex items-center gap-4 text-sm font-semibold text-slate-500">
+            <a href="#mario-pack" class="hover:text-brand-600 transition-colors">Mario</a>
+            <a href="#weegee-pack" class="hover:text-brand-600 transition-colors">Weegee</a>
+            <a href="#sonic-pack" class="hover:text-brand-600 transition-colors">Sonic</a>
+        </div>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-slate-900/20 z-50 hidden backdrop-blur-sm transition-opacity opacity-0"></div>
+
+    <!-- Sidebar Drawer -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-[60] w-80 bg-white border-r border-slate-200 transform -translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
+        <div class="p-6">
+            <!-- Header -->
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center gap-3">
+                    <div class="bg-brand-600 text-white p-2.5 rounded-xl shadow-lg shadow-brand-500/20">
+                        <i data-lucide="box" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-xl text-slate-900 leading-tight">CPM Nexus</h1>
+                        <p class="text-xs text-slate-500 font-medium">Model Repository</p>
+                    </div>
+                </div>
+                <button id="close-sidebar" class="text-slate-400 hover:text-slate-600 bg-slate-50 p-2 rounded-lg transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="space-y-1">
+                <a href="#hero" class="flex items-center gap-3 px-4 py-3.5 text-slate-600 rounded-xl hover:bg-slate-50 hover:text-brand-600 transition-colors font-semibold group nav-link">
+                    <i data-lucide="layout-grid" class="w-5 h-5 text-slate-400 group-hover:text-brand-600"></i>
+                    Discover
+                </a>
+                
+                <div class="pt-6 pb-3 px-4">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Collections</p>
+                </div>
+                
+                <a href="#mario-pack" class="flex items-center gap-3 px-4 py-3 text-slate-600 rounded-xl hover:bg-red-50 hover:text-mario transition-colors font-medium group nav-link">
+                    <div class="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-mario transition-colors"></div>
+                    Mario Pack
+                </a>
+
+                <a href="#weegee-pack" class="flex items-center gap-3 px-4 py-3 text-slate-600 rounded-xl hover:bg-green-50 hover:text-weegee transition-colors font-medium group nav-link">
+                    <div class="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-weegee transition-colors"></div>
+                    Weegee Pack
+                </a>
+                
+                <a href="#sonic-pack" class="flex items-center gap-3 px-4 py-3 text-slate-600 rounded-xl hover:bg-sky-50 hover:text-sonic transition-colors font-medium group nav-link">
+                    <div class="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-sonic transition-colors"></div>
+                    Sonic Pack
+                </a>
+
+                <div class="pt-6 pb-3 px-4">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Resources</p>
+                </div>
+                
+                <a href="https://github.com/tom5454/CustomPlayerModels" target="_blank" class="flex items-center gap-3 px-4 py-3 text-slate-600 rounded-xl hover:bg-slate-50 hover:text-slate-900 transition-colors font-medium group">
+                    <i data-lucide="github" class="w-5 h-5 text-slate-400 group-hover:text-slate-900"></i>
+                    Get Mod
+                </a>
+            </nav>
+        </div>
+
+        <div class="mt-auto p-6 border-t border-slate-100 bg-slate-50/50">
+            <p class="text-xs text-slate-400 text-center font-medium leading-relaxed">
+                © 2025 CPM Nexus<br>Community Managed
+            </p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 min-w-0 pt-20">
+        
+        <!-- Hero Section -->
+        <header id="hero" class="px-6 py-16 lg:py-24 max-w-7xl mx-auto text-center lg:text-left">
+            <div class="max-w-4xl mx-auto lg:mx-0">
+                <h1 class="text-4xl lg:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight leading-[1.1]">
+                    Premium <span class="text-brand-600 relative inline-block">
+                        Custom Models
+                        <svg class="absolute w-full h-3 -bottom-1 left-0 text-brand-200 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
+                            <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="8" fill="none" />
+                        </svg>
+                    </span><br> for Minecraft Java.
+                </h1>
+                <p class="text-lg text-slate-500 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                    The nexus for high-quality Customizable Player Models. Download fully animated skins, complex rigs, and unique avatars completely for free.
+                </p>
+
+                <div class="flex flex-wrap gap-8 justify-center lg:justify-start">
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-bold text-slate-900">3</span>
+                        <span class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Collections</span>
+                    </div>
+                    <div class="hidden sm:block w-px h-12 bg-slate-200"></div>
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-bold text-slate-900">12k+</span>
+                        <span class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Downloads</span>
+                    </div>
+                    <div class="hidden sm:block w-px h-12 bg-slate-200"></div>
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-bold text-slate-900">100%</span>
+                        <span class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Free</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Grid -->
+        <div class="px-6 lg:px-12 pb-20 max-w-[1600px] mx-auto">
+            <div class="grid grid-cols-1 2xl:grid-cols-2 gap-10">
+                
+                <!-- ========================================== -->
+                <!-- MARIO PACK -->
+                <!-- ========================================== -->
+                <article id="mario-pack" class="bg-white rounded-3xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col scroll-mt-24">
+                    <!-- Image/Preview Header -->
+                    <div class="relative bg-slate-50 aspect-[16/9] lg:aspect-[2/1] border-b border-slate-100 flex items-center justify-center p-8 group overflow-hidden">
+                        <div class="absolute top-6 left-6 z-10">
+                            <span class="bg-white/90 backdrop-blur text-mario px-3 py-1 rounded-full text-xs font-bold shadow-sm border border-rose-100">Mario Series</span>
+                        </div>
+                        <img src="https://i.ibb.co/spGJDDHR/d39aaa59-94d2-4ade-8428-c3225ff50a25-covernew.png" 
+                             class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-lg" 
+                             alt="Mario Pack">
+                    </div>
+
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h2 class="text-2xl font-bold text-slate-900">Alphs' Mario Pack</h2>
+                                <p class="text-sm text-slate-500 font-medium">By Alphs</p>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-bold">10 Skins</span>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-600 mb-8 line-clamp-3">
+                            A comprehensive collection featuring 10 fully animated characters. Includes custom gestures, adjusted hitboxes via Pehkui, and fluid movement animations.
+                        </p>
+
+                        <!-- Media Preview -->
+                        <div class="mt-auto mb-6 bg-slate-900 rounded-2xl overflow-hidden aspect-video relative group/media shadow-md">
+                            <iframe id="mario-video" class="w-full h-full absolute inset-0 transition-opacity duration-300" src="https://www.youtube.com/embed/fy2re9YKYQM" title="Mario Showcase" frameborder="0" allowfullscreen></iframe>
+                            
+                            <!-- Image Overlay -->
+                            <div id="mario-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
+                                <img id="mario-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
+                                <button onclick="resetPreview('mario')" class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full backdrop-blur-sm transition-colors">
+                                    <i data-lucide="x" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Carousel -->
+                        <div class="relative group/carousel mb-8">
+                            <div class="absolute -top-6 left-0 text-[10px] font-bold text-slate-400 uppercase tracking-widest opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">Preview Skins</div>
+                            
+                            <button id="mario-nav-left" onclick="scrollCarousel('mario', -1)" class="absolute -left-3 top-1/2 -translate-y-1/2 z-10 bg-white text-slate-700 p-1.5 rounded-full shadow-lg border border-slate-100 hidden hover:scale-110 transition-transform">
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                            </button>
+                            <button id="mario-nav-right" onclick="scrollCarousel('mario', 1)" class="absolute -right-3 top-1/2 -translate-y-1/2 z-10 bg-white text-slate-700 p-1.5 rounded-full shadow-lg border border-slate-100 hover:scale-110 transition-transform">
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+
+                            <div id="mario-carousel" class="flex gap-3 overflow-x-auto snap-x scroll-smooth no-scrollbar py-2 fade-mask-x" onscroll="checkScroll('mario')">
+                                <!-- Items -->
+                                <button onclick="showPreview('mario', 'https://i.ibb.co/jvMPJD2r/b2826359-e95e-4e30-9141-1cabb7782c92-mariostar.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-mario hover:ring-2 hover:ring-mario/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/jvMPJD2r/b2826359-e95e-4e30-9141-1cabb7782c92-mariostar.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('mario', 'https://i.ibb.co/LdXQTHrn/872bc07a-3114-4708-b4e9-786ae53050ba-poltergust.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-mario hover:ring-2 hover:ring-mario/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/LdXQTHrn/872bc07a-3114-4708-b4e9-786ae53050ba-poltergust.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('mario', 'https://i.ibb.co/fGLzFWPr/1d2ded39-8f28-4825-925c-1cba0ece4126-peachtaunt.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-mario hover:ring-2 hover:ring-mario/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/fGLzFWPr/1d2ded39-8f28-4825-925c-1cba0ece4126-peachtaunt.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('mario', 'https://i.ibb.co/hx3NWs5z/f7d375b4-ecb4-4250-835c-e7cee54f5db0-toswaterfall.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-mario hover:ring-2 hover:ring-mario/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/hx3NWs5z/f7d375b4-ecb4-4250-835c-e7cee54f5db0-toswaterfall.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('mario', 'https://i.ibb.co/mry2xbzv/1c80ab1e-6931-4bdd-a174-0fa50f06edbe-yoshitongue.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-mario hover:ring-2 hover:ring-mario/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/mry2xbzv/1c80ab1e-6931-4bdd-a174-0fa50f06edbe-yoshitongue.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('mario', 'https://i.ibb.co/ds0MdcZr/756accad-1e80-478c-9188-a56b7dcb78a8-koopafreerunning.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-mario hover:ring-2 hover:ring-mario/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/ds0MdcZr/756accad-1e80-478c-9188-a56b7dcb78a8-koopafreerunning.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('mario', 'https://i.ibb.co/Wp095k7t/b420cc76-8736-4a55-8809-8e78b07bf5b7-bowserlaugh.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-mario hover:ring-2 hover:ring-mario/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/Wp095k7t/b420cc76-8736-4a55-8809-8e78b07bf5b7-bowserlaugh.png" class="w-full h-full object-contain">
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 pt-6 border-t border-slate-50">
+                            <a href="https://www.mediafire.com/file/3sihup8u3jwthw0/MarioSkinPack.zip/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-slate-200/50">
+                                <i data-lucide="download" class="w-4 h-4"></i> Download
+                            </a>
+                            <a href="https://ko-fi.com/Post/SUPER-MARIO-Minecraft-CPM-Skin-Pack-FREE-DOWNLO-F1F5WL0H5" target="_blank" class="p-3 border border-slate-200 rounded-xl hover:bg-slate-50 text-slate-500 transition-colors">
+                                <i data-lucide="coffee" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========================================== -->
+                <!-- WEEGEE PACK -->
+                <!-- ========================================== -->
+                <article id="weegee-pack" class="bg-white rounded-3xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col scroll-mt-24">
+                    <div class="relative bg-slate-50 aspect-[16/9] lg:aspect-[2/1] border-b border-slate-100 flex items-center justify-center p-8 group overflow-hidden">
+                        <div class="absolute top-6 left-6 z-10">
+                            <span class="bg-white/90 backdrop-blur text-weegee px-3 py-1 rounded-full text-xs font-bold shadow-sm border border-green-100">Mario Series</span>
+                        </div>
+                        <img src="https://i.ibb.co/S7Hb8kNp/f884825c-e1dd-4b84-92dc-cf3b80c32480-weegeecover.png" 
+                             class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-lg" 
+                             alt="Weegee Pack">
+                    </div>
+
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h2 class="text-2xl font-bold text-slate-900">Weegee CPM Skin</h2>
+                                <p class="text-sm text-slate-500 font-medium">By Alphs</p>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-bold">2 Skins</span>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-600 mb-8 line-clamp-3">
+                            Obey... WEEGEE. Includes two skins: Weegee and Weegee (Fair Play). Fully animated and ready to haunt your Minecraft world.
+                        </p>
+
+                        <!-- Media Preview (Image Default) -->
+                        <div class="mt-auto mb-6 bg-slate-50 rounded-2xl overflow-hidden aspect-video relative group/media shadow-inner border border-slate-100">
+                            <img id="weegee-video" src="https://i.ibb.co/zHL2byQb/5b8f8b54-4968-4661-ae13-eb59e3e05ade-weegeeeyes.png" class="w-full h-full object-contain p-4 transition-opacity duration-300" alt="Default Preview">
+                            
+                            <!-- Overlay -->
+                            <div id="weegee-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
+                                <img id="weegee-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
+                                <button onclick="resetPreview('weegee')" class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full backdrop-blur-sm transition-colors">
+                                    <i data-lucide="x" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Carousel -->
+                        <div class="relative group/carousel mb-8">
+                            <div class="absolute -top-6 left-0 text-[10px] font-bold text-slate-400 uppercase tracking-widest opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">Preview Skins</div>
+                            
+                            <button id="weegee-nav-left" onclick="scrollCarousel('weegee', -1)" class="absolute -left-3 top-1/2 -translate-y-1/2 z-10 bg-white text-slate-700 p-1.5 rounded-full shadow-lg border border-slate-100 hidden hover:scale-110 transition-transform">
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                            </button>
+                            <button id="weegee-nav-right" onclick="scrollCarousel('weegee', 1)" class="absolute -right-3 top-1/2 -translate-y-1/2 z-10 bg-white text-slate-700 p-1.5 rounded-full shadow-lg border border-slate-100 hover:scale-110 transition-transform">
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+
+                            <div id="weegee-carousel" class="flex gap-3 overflow-x-auto snap-x scroll-smooth no-scrollbar py-2 fade-mask-x" onscroll="checkScroll('weegee')">
+                                <button onclick="showPreview('weegee', 'https://i.ibb.co/zHL2byQb/5b8f8b54-4968-4661-ae13-eb59e3e05ade-weegeeeyes.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-weegee hover:ring-2 hover:ring-weegee/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/zHL2byQb/5b8f8b54-4968-4661-ae13-eb59e3e05ade-weegeeeyes.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('weegee', 'https://i.ibb.co/fzMpQysf/6e3b5e83-81d7-4a07-b656-927b3dbc9232-weegeebig.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-weegee hover:ring-2 hover:ring-weegee/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/fzMpQysf/6e3b5e83-81d7-4a07-b656-927b3dbc9232-weegeebig.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('weegee', 'https://i.ibb.co/jkTQ8zJ2/09f3a4fb-731c-45ca-a4a7-6b154d497a38-mamaluigi.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-weegee hover:ring-2 hover:ring-weegee/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/jkTQ8zJ2/09f3a4fb-731c-45ca-a4a7-6b154d497a38-mamaluigi.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('weegee', 'https://i.ibb.co/LXMvT1g2/68e25600-3e00-46b5-ae1d-79530883cf30-lazar.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-weegee hover:ring-2 hover:ring-weegee/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/LXMvT1g2/68e25600-3e00-46b5-ae1d-79530883cf30-lazar.png" class="w-full h-full object-contain">
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 pt-6 border-t border-slate-50">
+                            <a href="https://www.mediafire.com/file/qn0uifhvdgxjjdk/weegeeCPMskin.zip/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-slate-200/50">
+                                <i data-lucide="download" class="w-4 h-4"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========================================== -->
+                <!-- SONIC PACK -->
+                <!-- ========================================== -->
+                <article id="sonic-pack" class="bg-white rounded-3xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col scroll-mt-24">
+                    <div class="relative bg-slate-50 aspect-[16/9] lg:aspect-[2/1] border-b border-slate-100 flex items-center justify-center p-8 group overflow-hidden">
+                        <div class="absolute top-6 left-6 z-10">
+                            <span class="bg-white/90 backdrop-blur text-sonic px-3 py-1 rounded-full text-xs font-bold shadow-sm border border-sky-100">Sonic Series</span>
+                        </div>
+                        <img src="https://i.ibb.co/sv2Vz48S/0a492e26-c8cc-43a0-aef2-5f11e45f9917-covershopnew.png" 
+                             class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-lg" 
+                             alt="Sonic Pack">
+                    </div>
+
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h2 class="text-2xl font-bold text-slate-900">Alphs' Sonic Pack</h2>
+                                <p class="text-sm text-slate-500 font-medium">By Alphs</p>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-bold">6 Skins</span>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-600 mb-8 line-clamp-3">
+                            A Sonic the Hedgehog themed pack featuring 6 unique skins including Sonic, Tails, Knuckles, Amy, and Metal Sonic. Includes custom speed animations.
+                        </p>
+
+                        <!-- Media Preview -->
+                        <div class="mt-auto mb-6 bg-slate-900 rounded-2xl overflow-hidden aspect-video relative group/media shadow-md">
+                            <iframe id="sonic-video" class="w-full h-full absolute inset-0 transition-opacity duration-300" src="https://www.youtube.com/embed/qph8ML9eSHs" title="Sonic Showcase" frameborder="0" allowfullscreen></iframe>
+                            
+                            <!-- Image Overlay -->
+                            <div id="sonic-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
+                                <img id="sonic-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
+                                <button onclick="resetPreview('sonic')" class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full backdrop-blur-sm transition-colors">
+                                    <i data-lucide="x" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Carousel -->
+                        <div class="relative group/carousel mb-8">
+                            <div class="absolute -top-6 left-0 text-[10px] font-bold text-slate-400 uppercase tracking-widest opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">Preview Skins</div>
+                            
+                            <button id="sonic-nav-left" onclick="scrollCarousel('sonic', -1)" class="absolute -left-3 top-1/2 -translate-y-1/2 z-10 bg-white text-slate-700 p-1.5 rounded-full shadow-lg border border-slate-100 hidden hover:scale-110 transition-transform">
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                            </button>
+                            <button id="sonic-nav-right" onclick="scrollCarousel('sonic', 1)" class="absolute -right-3 top-1/2 -translate-y-1/2 z-10 bg-white text-slate-700 p-1.5 rounded-full shadow-lg border border-slate-100 hover:scale-110 transition-transform">
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+
+                            <div id="sonic-carousel" class="flex gap-3 overflow-x-auto snap-x scroll-smooth no-scrollbar py-2 fade-mask-x" onscroll="checkScroll('sonic')">
+                                <button onclick="showPreview('sonic', 'https://i.ibb.co/1GJFTMyW/77b87853-5d2b-48f5-bd47-8ba55f3733cd-sc-sonic-1.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-sonic hover:ring-2 hover:ring-sonic/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/1GJFTMyW/77b87853-5d2b-48f5-bd47-8ba55f3733cd-sc-sonic-1.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('sonic', 'https://i.ibb.co/7t0XYg9F/566d72ce-ff9c-48a1-bf50-55f9cd37f258-knux.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-sonic hover:ring-2 hover:ring-sonic/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/7t0XYg9F/566d72ce-ff9c-48a1-bf50-55f9cd37f258-knux.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('sonic', 'https://i.ibb.co/bjqGFq3D/98e97312-3d67-4996-b086-c7a2e74716d6-sc-sonic-4.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-sonic hover:ring-2 hover:ring-sonic/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/bjqGFq3D/98e97312-3d67-4996-b086-c7a2e74716d6-sc-sonic-4.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('sonic', 'https://i.ibb.co/VYv9zPBc/4c837355-a68d-47e3-8e2c-57c093bf09a8-sc-sonic-3.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-sonic hover:ring-2 hover:ring-sonic/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/VYv9zPBc/4c837355-a68d-47e3-8e2c-57c093bf09a8-sc-sonic-3.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('sonic', 'https://i.ibb.co/Y7wNB6hB/941003e4-5046-4c08-85d4-066d06a8980b-sc-sonic-5.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-sonic hover:ring-2 hover:ring-sonic/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/Y7wNB6hB/941003e4-5046-4c08-85d4-066d06a8980b-sc-sonic-5.png" class="w-full h-full object-contain">
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 pt-6 border-t border-slate-50">
+                            <a href="https://www.mediafire.com/file/p1um20mocpbtm1t/AlphsSonictheHedgehogSkinPackv1.2.zip/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-slate-200/50">
+                                <i data-lucide="download" class="w-4 h-4"></i> Download
+                            </a>
+                            <a href="https://ko-fi.com/post/Alphs-SONIC-THE-HEDGEHOG-Skin-Pack-S6S21GVCYR" target="_blank" class="p-3 border border-slate-200 rounded-xl hover:bg-slate-50 text-slate-500 transition-colors">
+                                <i data-lucide="coffee" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <footer class="border-t border-slate-200 bg-white py-12 px-8">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-sm text-slate-500">
+                    &copy; 2025 CPM Nexus. <span class="text-slate-400">Not affiliated with Mojang Studios.</span>
+                </p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors">Submit Model</a>
+                    <a href="#" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        // Preview Logic
+        function showPreview(packId, imageUrl) {
+            const video = document.getElementById(`${packId}-video`);
+            const overlay = document.getElementById(`${packId}-image-overlay`);
+            const img = document.getElementById(`${packId}-preview-img`);
+
+            if(img) img.src = imageUrl;
+            
+            // Fade out video
+            if (video) video.classList.add('opacity-0');
+            
+            // Show overlay
+            if (overlay) {
+                overlay.classList.remove('invisible');
+                overlay.classList.remove('opacity-0');
+            }
+        }
+
+        function resetPreview(packId) {
+            const video = document.getElementById(`${packId}-video`);
+            const overlay = document.getElementById(`${packId}-image-overlay`);
+            
+            // Hide overlay
+            if (overlay) overlay.classList.add('opacity-0');
+            
+            // Fade in video
+            if (video) video.classList.remove('opacity-0');
+            
+            // Delay adding invisible to allow fade out transition
+            setTimeout(() => {
+                if (overlay) overlay.classList.add('invisible');
+            }, 300);
+        }
+
+        // Manual Carousel Logic
+        function scrollCarousel(packId, direction) {
+            const container = document.getElementById(`${packId}-carousel`);
+            const scrollAmount = 240; 
+            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+
+        function checkScroll(packId) {
+            const container = document.getElementById(`${packId}-carousel`);
+            const leftBtn = document.getElementById(`${packId}-nav-left`);
+            const rightBtn = document.getElementById(`${packId}-nav-right`);
+
+            if (!container || !leftBtn || !rightBtn) return;
+
+            // Check if scrollable
+            if (container.scrollWidth <= container.clientWidth) {
+                leftBtn.classList.add('hidden');
+                rightBtn.classList.add('hidden');
+                return;
+            }
+
+            // Left Button
+            if (container.scrollLeft <= 5) {
+                leftBtn.classList.add('hidden');
+            } else {
+                leftBtn.classList.remove('hidden');
+            }
+
+            // Right Button
+            if (Math.ceil(container.scrollLeft + container.clientWidth) >= container.scrollWidth - 5) {
+                rightBtn.classList.add('hidden');
+            } else {
+                rightBtn.classList.remove('hidden');
+            }
+        }
+
+        // Init
+        window.addEventListener('load', () => {
+            ['mario', 'weegee', 'sonic'].forEach(id => checkScroll(id));
+        });
+        window.addEventListener('resize', () => {
+            ['mario', 'weegee', 'sonic'].forEach(id => checkScroll(id));
+        });
+
+        // Mobile Menu
+        const menuBtn = document.getElementById('menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const closeBtn = document.getElementById('close-sidebar');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function toggleMenu() {
+            const isClosed = sidebar.classList.contains('-translate-x-full');
+            if (isClosed) {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // On mobile, close menu after clicking a link
+                if (window.innerWidth < 1024) toggleMenu();
+            });
+        });
+    </script>
+</body>
+</html>
