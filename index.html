@@ -549,6 +549,16 @@
         menuBtn.addEventListener('click', toggleMenu);
         closeBtn.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
+
+        // Privacy Modal Logic
+        function togglePrivacyModal() {
+            const modal = document.getElementById('privacy-modal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
     </script>
 </body>
 </html>
