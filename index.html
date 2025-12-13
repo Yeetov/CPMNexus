@@ -31,6 +31,7 @@
                         mario: '#e11d48', // Rose-600
                         weegee: '#16a34a', // Green-600
                         sonic: '#0284c7', // Sky-600
+                        fnaf: '#d97706', // Amber-600 (Freddy color)
                     },
                     boxShadow: {
                         'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
@@ -100,6 +101,7 @@
             <a href="#mario-pack" class="hover:text-brand-600 transition-colors">Mario</a>
             <a href="#weegee-pack" class="hover:text-brand-600 transition-colors">Weegee</a>
             <a href="#sonic-pack" class="hover:text-brand-600 transition-colors">Sonic</a>
+            <a href="#fnaf-pack" class="hover:text-brand-600 transition-colors">FNaF</a>
         </div>
     </nav>
 
@@ -151,6 +153,11 @@
                     Sonic Pack
                 </a>
 
+                <a href="#fnaf-pack" class="flex items-center gap-3 px-4 py-3 text-slate-600 rounded-xl hover:bg-orange-50 hover:text-fnaf transition-colors font-medium group nav-link">
+                    <div class="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-fnaf transition-colors"></div>
+                    FNaF Pack
+                </a>
+
                 <div class="pt-6 pb-3 px-4">
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Resources</p>
                 </div>
@@ -189,12 +196,12 @@
 
                 <div class="flex flex-wrap gap-8 justify-center lg:justify-start">
                     <div class="flex flex-col">
-                        <span class="text-3xl font-bold text-slate-900">3</span>
+                        <span class="text-3xl font-bold text-slate-900">4</span>
                         <span class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Collections</span>
                     </div>
                     <div class="hidden sm:block w-px h-12 bg-slate-200"></div>
                     <div class="flex flex-col">
-                        <span class="text-3xl font-bold text-slate-900">12k+</span>
+                        <span class="text-3xl font-bold text-slate-900">18k+</span>
                         <span class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Downloads</span>
                     </div>
                     <div class="hidden sm:block w-px h-12 bg-slate-200"></div>
@@ -226,9 +233,23 @@
 
                     <div class="p-8 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h2 class="text-2xl font-bold text-slate-900">Alphs' Mario Pack</h2>
-                                <p class="text-sm text-slate-500 font-medium">By Alphs</p>
+                            <div class="flex items-center gap-3">
+                                <!-- Avatar -->
+                                <a href="https://ko-fi.com/alphs20" target="_blank" class="flex-shrink-0 group/avatar">
+                                    <img src="https://i.ibb.co/206k1PJr/4b836f5f-4428-461b-9fb6-426b5caebf19-e1491a0a-1b0f-479c-89dc-1e19b6560516.png" alt="Alphs" class="w-10 h-10 rounded-full border border-slate-200 group-hover/avatar:border-mario transition-colors">
+                                </a>
+                                <div>
+                                    <!-- Title (Clickable Download) -->
+                                    <a href="https://www.mediafire.com/file/3sihup8u3jwthw0/MarioSkinPack.zip/file" target="_blank" class="group/title">
+                                        <h2 class="text-2xl font-bold text-slate-900 group-hover/title:text-brand-600 transition-colors">Alphs' Mario Pack</h2>
+                                    </a>
+                                    <!-- Author Name (Clickable Ko-fi) -->
+                                    <a href="https://ko-fi.com/alphs20" target="_blank" class="group/author">
+                                        <p class="text-sm text-slate-500 font-medium flex items-center gap-1 group-hover/author:text-slate-700">
+                                            By Alphs <i data-lucide="external-link" class="w-3 h-3 opacity-0 group-hover/author:opacity-100 transition-opacity"></i>
+                                        </p>
+                                    </a>
+                                </div>
                             </div>
                             <div class="flex gap-2">
                                 <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-bold">10 Skins</span>
@@ -315,9 +336,23 @@
 
                     <div class="p-8 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h2 class="text-2xl font-bold text-slate-900">Weegee CPM Skin</h2>
-                                <p class="text-sm text-slate-500 font-medium">By Alphs</p>
+                            <div class="flex items-center gap-3">
+                                <!-- Avatar -->
+                                <a href="https://ko-fi.com/alphs20" target="_blank" class="flex-shrink-0 group/avatar">
+                                    <img src="https://i.ibb.co/206k1PJr/4b836f5f-4428-461b-9fb6-426b5caebf19-e1491a0a-1b0f-479c-89dc-1e19b6560516.png" alt="Alphs" class="w-10 h-10 rounded-full border border-slate-200 group-hover/avatar:border-weegee transition-colors">
+                                </a>
+                                <div>
+                                    <!-- Title (Download) -->
+                                    <a href="https://www.mediafire.com/file/qn0uifhvdgxjjdk/weegeeCPMskin.zip/file" target="_blank" class="group/title">
+                                        <h2 class="text-2xl font-bold text-slate-900 group-hover/title:text-brand-600 transition-colors">Weegee CPM Skin</h2>
+                                    </a>
+                                    <!-- Author Name (Ko-fi) -->
+                                    <a href="https://ko-fi.com/alphs20" target="_blank" class="group/author">
+                                        <p class="text-sm text-slate-500 font-medium flex items-center gap-1 group-hover/author:text-slate-700">
+                                            By Alphs <i data-lucide="external-link" class="w-3 h-3 opacity-0 group-hover/author:opacity-100 transition-opacity"></i>
+                                        </p>
+                                    </a>
+                                </div>
                             </div>
                             <div class="flex gap-2">
                                 <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-bold">2 Skins</span>
@@ -372,6 +407,9 @@
                             <a href="https://www.mediafire.com/file/qn0uifhvdgxjjdk/weegeeCPMskin.zip/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-slate-200/50">
                                 <i data-lucide="download" class="w-4 h-4"></i> Download
                             </a>
+                            <a href="https://ko-fi.com/alphs20" target="_blank" class="p-3 border border-slate-200 rounded-xl hover:bg-slate-50 text-slate-500 transition-colors">
+                                <i data-lucide="coffee" class="w-5 h-5"></i>
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -391,9 +429,23 @@
 
                     <div class="p-8 flex-1 flex flex-col">
                         <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h2 class="text-2xl font-bold text-slate-900">Alphs' Sonic Pack</h2>
-                                <p class="text-sm text-slate-500 font-medium">By Alphs</p>
+                            <div class="flex items-center gap-3">
+                                <!-- Avatar -->
+                                <a href="https://ko-fi.com/alphs20" target="_blank" class="flex-shrink-0 group/avatar">
+                                    <img src="https://i.ibb.co/206k1PJr/4b836f5f-4428-461b-9fb6-426b5caebf19-e1491a0a-1b0f-479c-89dc-1e19b6560516.png" alt="Alphs" class="w-10 h-10 rounded-full border border-slate-200 group-hover/avatar:border-sonic transition-colors">
+                                </a>
+                                <div>
+                                    <!-- Title (Download) -->
+                                    <a href="https://www.mediafire.com/file/p1um20mocpbtm1t/AlphsSonictheHedgehogSkinPackv1.2.zip/file" target="_blank" class="group/title">
+                                        <h2 class="text-2xl font-bold text-slate-900 group-hover/title:text-brand-600 transition-colors">Alphs' Sonic Pack</h2>
+                                    </a>
+                                    <!-- Author Name (Ko-fi) -->
+                                    <a href="https://ko-fi.com/alphs20" target="_blank" class="group/author">
+                                        <p class="text-sm text-slate-500 font-medium flex items-center gap-1 group-hover/author:text-slate-700">
+                                            By Alphs <i data-lucide="external-link" class="w-3 h-3 opacity-0 group-hover/author:opacity-100 transition-opacity"></i>
+                                        </p>
+                                    </a>
+                                </div>
                             </div>
                             <div class="flex gap-2">
                                 <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-bold">6 Skins</span>
@@ -451,7 +503,78 @@
                             <a href="https://www.mediafire.com/file/p1um20mocpbtm1t/AlphsSonictheHedgehogSkinPackv1.2.zip/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-slate-200/50">
                                 <i data-lucide="download" class="w-4 h-4"></i> Download
                             </a>
-                            <a href="https://ko-fi.com/post/Alphs-SONIC-THE-HEDGEHOG-Skin-Pack-S6S21GVCYR" target="_blank" class="p-3 border border-slate-200 rounded-xl hover:bg-slate-50 text-slate-500 transition-colors">
+                            <a href="https://ko-fi.com/Post/Alphs-SONIC-THE-HEDGEHOG-Skin-Pack-S6S21GVCYR" target="_blank" class="p-3 border border-slate-200 rounded-xl hover:bg-slate-50 text-slate-500 transition-colors">
+                                <i data-lucide="coffee" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========================================== -->
+                <!-- FNAF PACK -->
+                <!-- ========================================== -->
+                <article id="fnaf-pack" class="bg-white rounded-3xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col scroll-mt-24">
+                    <div class="relative bg-slate-50 aspect-[16/9] lg:aspect-[2/1] border-b border-slate-100 flex items-center justify-center p-8 group overflow-hidden">
+                        <div class="absolute top-6 left-6 z-10">
+                            <span class="bg-white/90 backdrop-blur text-fnaf px-3 py-1 rounded-full text-xs font-bold shadow-sm border border-amber-100">FNaF Series</span>
+                        </div>
+                        <img src="https://i.ibb.co/KxfX6H0h/d4cbab8b-bd67-486e-afcb-5e5f8abe0960-fnafingrender1.png" 
+                             class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-lg" 
+                             alt="FNaF Pack">
+                    </div>
+
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-3">
+                                <!-- Avatar -->
+                                <a href="https://ko-fi.com/inkyinkylillylilly/" target="_blank" class="flex-shrink-0 group/avatar">
+                                    <img src="https://i.ibb.co/40BtWPq/3faa7f76-558d-4a6d-ab6a-68a2d332ea25-4f7ef870-646f-43af-b0ec-17e803853232.png" alt="InkyLilly" class="w-10 h-10 rounded-full border border-slate-200 group-hover/avatar:border-fnaf transition-colors">
+                                </a>
+                                <div>
+                                    <!-- Title (Download) -->
+                                    <a href="https://www.mediafire.com/file/xx5h47oxmqbv6e7/FNaF+1+Pack.zip/file" target="_blank" class="group/title">
+                                        <h2 class="text-xl font-bold text-slate-900 leading-tight group-hover/title:text-brand-600 transition-colors">Five Nights at Freddy's 1</h2>
+                                    </a>
+                                    <!-- Author Name (Ko-fi) -->
+                                    <a href="https://ko-fi.com/inkyinkylillylilly/" target="_blank" class="group/author">
+                                        <p class="text-xs text-slate-500 font-medium flex items-center gap-1 group-hover/author:text-slate-700">
+                                            By InkyLilly <i data-lucide="external-link" class="w-3 h-3 opacity-0 group-hover/author:opacity-100 transition-opacity"></i>
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-bold">6 Skins</span>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-600 mb-8 line-clamp-3">
+                            Here's a small Minecraft Player Model pack of the FNaF 1 animatronics, and a crying child because I wanted an even number of models in the pack.
+                        </p>
+
+                        <!-- Static Preview (Since no video provided) -->
+                        <div class="mt-auto mb-6 bg-slate-900 rounded-2xl overflow-hidden aspect-video relative group/media shadow-md border border-slate-100">
+                            <img src="https://i.ibb.co/KxfX6H0h/d4cbab8b-bd67-486e-afcb-5e5f8abe0960-fnafingrender1.png" class="w-full h-full object-contain p-2" alt="FNaF Preview">
+                        </div>
+
+                        <!-- Character List (Since no individual images provided) -->
+                        <div class="mb-8">
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Includes Characters</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-600">Freddy Fazbear</span>
+                                <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-600">Bonnie</span>
+                                <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-600">Chica</span>
+                                <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-600">Foxy</span>
+                                <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-600">Golden Freddy</span>
+                                <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-lg text-xs font-semibold text-slate-600">Crying Child</span>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 pt-6 border-t border-slate-50">
+                            <a href="https://www.mediafire.com/file/xx5h47oxmqbv6e7/FNaF+1+Pack.zip/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-slate-200/50">
+                                <i data-lucide="download" class="w-4 h-4"></i> Download
+                            </a>
+                            <a href="https://ko-fi.com/inkyinkylillylilly/" target="_blank" class="p-3 border border-slate-200 rounded-xl hover:bg-slate-50 text-slate-500 transition-colors">
                                 <i data-lucide="coffee" class="w-5 h-5"></i>
                             </a>
                         </div>
@@ -467,13 +590,41 @@
                     &copy; 2025 CPM Nexus. <span class="text-slate-400">Not affiliated with Mojang Studios.</span>
                 </p>
                 <div class="flex gap-6">
-                    <a href="#" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors">Submit Model</a>
-                    <a href="#" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors">Privacy Policy</a>
+                    <button onclick="togglePrivacyModal()" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors">Privacy & Disclaimer</button>
                 </div>
             </div>
         </footer>
 
     </main>
+
+    <!-- Privacy Modal -->
+    <div id="privacy-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="togglePrivacyModal()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg p-4">
+            <div class="bg-white rounded-2xl shadow-2xl p-8 relative">
+                <button onclick="togglePrivacyModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                <h3 class="text-2xl font-bold text-slate-900 mb-4">Privacy & Disclaimer</h3>
+                <div class="prose prose-slate text-slate-600 text-sm leading-relaxed">
+                    <p class="mb-4">
+                        These models were made available for free by the creators. Models are usually based on trademarked IPs, so these are not official models and are just based on them.
+                    </p>
+                    <p class="mb-4">
+                        Nobody has given permission to put these models on the site but they are open source and credit is given along with Ko-fi links.
+                    </p>
+                    <p>
+                        This site is a fan-made repository and claims no ownership over the models or the intellectual property they represent.
+                    </p>
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <button onclick="togglePrivacyModal()" class="bg-slate-900 text-white font-semibold py-2 px-6 rounded-lg hover:bg-brand-600 transition-colors">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         lucide.createIcons();
@@ -586,6 +737,16 @@
                 if (window.innerWidth < 1024) toggleMenu();
             });
         });
+
+        // Privacy Modal Logic
+        function togglePrivacyModal() {
+            const modal = document.getElementById('privacy-modal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
     </script>
 </body>
 </html>
