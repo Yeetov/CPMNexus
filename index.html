@@ -31,7 +31,10 @@
                         mario: '#e11d48', // Rose-600
                         weegee: '#16a34a', // Green-600
                         sonic: '#0284c7', // Sky-600
-                        fnaf: '#d97706', // Amber-600 (Freddy color)
+                        fnaf: '#d97706', // Amber-600
+                        noivern: '#7c3aed', // Violet-600
+                        braixen: '#ea580c', // Orange-600
+                        cubone: '#78716c', // Stone-500
                     },
                     boxShadow: {
                         'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
@@ -97,11 +100,11 @@
                 <span class="font-bold text-xl text-slate-900 tracking-tight">CPM Nexus</span>
             </div>
         </div>
-        <div class="hidden sm:flex items-center gap-4 text-sm font-semibold text-slate-500">
-            <a href="#mario-pack" class="hover:text-brand-600 transition-colors">Mario</a>
-            <a href="#weegee-pack" class="hover:text-brand-600 transition-colors">Weegee</a>
-            <a href="#sonic-pack" class="hover:text-brand-600 transition-colors">Sonic</a>
-            <a href="#fnaf-pack" class="hover:text-brand-600 transition-colors">FNaF</a>
+        <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-500">
+            <a href="#mario-pack" class="hover:text-mario transition-colors">Mario</a>
+            <a href="#sonic-pack" class="hover:text-sonic transition-colors">Sonic</a>
+            <a href="#fnaf-pack" class="hover:text-fnaf transition-colors">FNaF</a>
+            <a href="#noivern-model" class="hover:text-noivern transition-colors">Pokémon</a>
         </div>
     </nav>
 
@@ -138,24 +141,41 @@
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Collections</p>
                 </div>
                 
-                <a href="#mario-pack" class="flex items-center gap-3 px-4 py-3 text-slate-600 rounded-xl hover:bg-red-50 hover:text-mario transition-colors font-medium group nav-link">
+                <a href="#mario-pack" class="flex items-center gap-3 px-4 py-2.5 text-slate-600 rounded-xl hover:bg-red-50 hover:text-mario transition-colors font-medium group nav-link">
                     <div class="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-mario transition-colors"></div>
                     Mario Pack
                 </a>
 
-                <a href="#weegee-pack" class="flex items-center gap-3 px-4 py-3 text-slate-600 rounded-xl hover:bg-green-50 hover:text-weegee transition-colors font-medium group nav-link">
+                <a href="#weegee-pack" class="flex items-center gap-3 px-4 py-2.5 text-slate-600 rounded-xl hover:bg-green-50 hover:text-weegee transition-colors font-medium group nav-link">
                     <div class="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-weegee transition-colors"></div>
                     Weegee Pack
                 </a>
                 
-                <a href="#sonic-pack" class="flex items-center gap-3 px-4 py-3 text-slate-600 rounded-xl hover:bg-sky-50 hover:text-sonic transition-colors font-medium group nav-link">
+                <a href="#sonic-pack" class="flex items-center gap-3 px-4 py-2.5 text-slate-600 rounded-xl hover:bg-sky-50 hover:text-sonic transition-colors font-medium group nav-link">
                     <div class="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-sonic transition-colors"></div>
                     Sonic Pack
                 </a>
 
-                <a href="#fnaf-pack" class="flex items-center gap-3 px-4 py-3 text-slate-600 rounded-xl hover:bg-orange-50 hover:text-fnaf transition-colors font-medium group nav-link">
+                <a href="#fnaf-pack" class="flex items-center gap-3 px-4 py-2.5 text-slate-600 rounded-xl hover:bg-orange-50 hover:text-fnaf transition-colors font-medium group nav-link">
                     <div class="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-fnaf transition-colors"></div>
                     FNaF Pack
+                </a>
+
+                <div class="pt-6 pb-3 px-4">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Pokémon</p>
+                </div>
+
+                <a href="#noivern-model" class="flex items-center gap-3 px-4 py-2.5 text-slate-600 rounded-xl hover:bg-purple-50 hover:text-noivern transition-colors font-medium group nav-link">
+                    <div class="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-noivern transition-colors"></div>
+                    Noivern
+                </a>
+                <a href="#braixen-model" class="flex items-center gap-3 px-4 py-2.5 text-slate-600 rounded-xl hover:bg-orange-50 hover:text-braixen transition-colors font-medium group nav-link">
+                    <div class="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-braixen transition-colors"></div>
+                    Braixen
+                </a>
+                <a href="#cubone-model" class="flex items-center gap-3 px-4 py-2.5 text-slate-600 rounded-xl hover:bg-stone-100 hover:text-cubone transition-colors font-medium group nav-link">
+                    <div class="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-cubone transition-colors"></div>
+                    Cubone
                 </a>
 
                 <div class="pt-6 pb-3 px-4">
@@ -196,12 +216,12 @@
 
                 <div class="flex flex-wrap gap-8 justify-center lg:justify-start">
                     <div class="flex flex-col">
-                        <span class="text-3xl font-bold text-slate-900">4</span>
+                        <span class="text-3xl font-bold text-slate-900">7</span>
                         <span class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Collections</span>
                     </div>
                     <div class="hidden sm:block w-px h-12 bg-slate-200"></div>
                     <div class="flex flex-col">
-                        <span class="text-3xl font-bold text-slate-900">18k+</span>
+                        <span class="text-3xl font-bold text-slate-900">20k+</span>
                         <span class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Downloads</span>
                     </div>
                     <div class="hidden sm:block w-px h-12 bg-slate-200"></div>
@@ -215,7 +235,7 @@
 
         <!-- Content Grid -->
         <div class="px-6 lg:px-12 pb-20 max-w-[1600px] mx-auto">
-            <div class="grid grid-cols-1 2xl:grid-cols-2 gap-10">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 lg:gap-10">
                 
                 <!-- ========================================== -->
                 <!-- MARIO PACK -->
@@ -239,11 +259,9 @@
                                     <img src="https://i.ibb.co/206k1PJr/4b836f5f-4428-461b-9fb6-426b5caebf19-e1491a0a-1b0f-479c-89dc-1e19b6560516.png" alt="Alphs" class="w-10 h-10 rounded-full border border-slate-200 group-hover/avatar:border-mario transition-colors">
                                 </a>
                                 <div>
-                                    <!-- Title (Clickable Download) -->
                                     <a href="https://www.mediafire.com/file/3sihup8u3jwthw0/MarioSkinPack.zip/file" target="_blank" class="group/title">
                                         <h2 class="text-2xl font-bold text-slate-900 group-hover/title:text-brand-600 transition-colors">Alphs' Mario Pack</h2>
                                     </a>
-                                    <!-- Author Name (Clickable Ko-fi) -->
                                     <a href="https://ko-fi.com/alphs20" target="_blank" class="group/author">
                                         <p class="text-sm text-slate-500 font-medium flex items-center gap-1 group-hover/author:text-slate-700">
                                             By Alphs <i data-lucide="external-link" class="w-3 h-3 opacity-0 group-hover/author:opacity-100 transition-opacity"></i>
@@ -316,6 +334,243 @@
                             </a>
                             <a href="https://ko-fi.com/Post/SUPER-MARIO-Minecraft-CPM-Skin-Pack-FREE-DOWNLO-F1F5WL0H5" target="_blank" class="p-3 border border-slate-200 rounded-xl hover:bg-slate-50 text-slate-500 transition-colors">
                                 <i data-lucide="coffee" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========================================== -->
+                <!-- NOIVERN MODEL (NEW) -->
+                <!-- ========================================== -->
+                <article id="noivern-model" class="bg-white rounded-3xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col scroll-mt-24">
+                    <div class="relative bg-slate-50 aspect-[16/9] lg:aspect-[2/1] border-b border-slate-100 flex items-center justify-center p-8 group overflow-hidden">
+                        <div class="absolute top-6 left-6 z-10">
+                            <span class="bg-white/90 backdrop-blur text-noivern px-3 py-1 rounded-full text-xs font-bold shadow-sm border border-purple-100">Pokémon</span>
+                        </div>
+                        <img src="https://i.ibb.co/tPPb6VLW/image.png" 
+                             class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-lg" 
+                             alt="Noivern Model">
+                    </div>
+
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="flex-shrink-0">
+                                    <img src="https://i.ibb.co/xtQw3s9L/86bf55fa-c69c-4342-aba5-264a25bb3a03-1c4fc6c8-d781-4be3-97d0-7298d1feb504.png" alt="SerHan-Solo" class="w-10 h-10 rounded-full border border-slate-200">
+                                </div>
+                                <div>
+                                    <a href="https://www.mediafire.com/file/pd9xzjeezmi3d9k/Noivern.cpmmodel/file" target="_blank" class="group/title">
+                                        <h2 class="text-2xl font-bold text-slate-900 group-hover/title:text-brand-600 transition-colors">Noivern Model</h2>
+                                    </a>
+                                    <p class="text-sm text-slate-500 font-medium">By SerHan-Solo</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-bold">Updated</span>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-600 mb-8 line-clamp-3">
+                            Soar through the night as the fierce Noivern! Model belongs to the Cobblemon Team, re-animated by SerHan. Includes riding and freezing animations.
+                        </p>
+
+                        <!-- Media Preview -->
+                        <div class="mt-auto mb-6 bg-slate-900 rounded-2xl overflow-hidden aspect-video relative group/media shadow-inner border border-slate-100">
+                            <img id="noivern-video" src="https://i.ibb.co/tPPb6VLW/image.png" class="w-full h-full object-contain p-4 transition-opacity duration-300" alt="Noivern Preview">
+                            
+                            <!-- Overlay -->
+                            <div id="noivern-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
+                                <img id="noivern-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
+                                <button onclick="resetPreview('noivern')" class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full backdrop-blur-sm transition-colors">
+                                    <i data-lucide="x" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Carousel -->
+                        <div class="relative group/carousel mb-8">
+                            <div class="absolute -top-6 left-0 text-[10px] font-bold text-slate-400 uppercase tracking-widest opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">Preview Skins</div>
+                            
+                            <button id="noivern-nav-left" onclick="scrollCarousel('noivern', -1)" class="absolute -left-3 top-1/2 -translate-y-1/2 z-10 bg-white text-slate-700 p-1.5 rounded-full shadow-lg border border-slate-100 hidden hover:scale-110 transition-transform">
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                            </button>
+                            <button id="noivern-nav-right" onclick="scrollCarousel('noivern', 1)" class="absolute -right-3 top-1/2 -translate-y-1/2 z-10 bg-white text-slate-700 p-1.5 rounded-full shadow-lg border border-slate-100 hover:scale-110 transition-transform">
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+
+                            <div id="noivern-carousel" class="flex gap-3 overflow-x-auto snap-x scroll-smooth no-scrollbar py-2 fade-mask-x" onscroll="checkScroll('noivern')">
+                                <button onclick="showPreview('noivern', 'https://i.ibb.co/tPPb6VLW/image.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-noivern hover:ring-2 hover:ring-noivern/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/tPPb6VLW/image.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('noivern', 'https://i.ibb.co/5XkGqn6q/fdfc0122-d073-483b-a983-b4a63ddcf773-minecraft-1-21-112-12-20255-57-47pm.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-noivern hover:ring-2 hover:ring-noivern/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/5XkGqn6q/fdfc0122-d073-483b-a983-b4a63ddcf773-minecraft-1-21-112-12-20255-57-47pm.png" class="w-full h-full object-contain">
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 pt-6 border-t border-slate-50">
+                            <a href="https://www.mediafire.com/file/pd9xzjeezmi3d9k/Noivern.cpmmodel/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-slate-200/50">
+                                <i data-lucide="download" class="w-4 h-4"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========================================== -->
+                <!-- BRAIXEN MODEL (NEW) -->
+                <!-- ========================================== -->
+                <article id="braixen-model" class="bg-white rounded-3xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col scroll-mt-24">
+                    <div class="relative bg-slate-50 aspect-[16/9] lg:aspect-[2/1] border-b border-slate-100 flex items-center justify-center p-8 group overflow-hidden">
+                        <div class="absolute top-6 left-6 z-10">
+                            <span class="bg-white/90 backdrop-blur text-braixen px-3 py-1 rounded-full text-xs font-bold shadow-sm border border-orange-100">Pokémon</span>
+                        </div>
+                        <img src="https://i.ibb.co/FTVNHr4/6e677b8b-c62e-4a34-af73-94a2620b703e-editbraixennew-sketchfab-googlechrome10-12-202510-05-17pm.png" 
+                             class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-lg" 
+                             alt="Braixen Model">
+                    </div>
+
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="flex-shrink-0">
+                                    <img src="https://i.ibb.co/xtQw3s9L/86bf55fa-c69c-4342-aba5-264a25bb3a03-1c4fc6c8-d781-4be3-97d0-7298d1feb504.png" alt="SerHan-Solo" class="w-10 h-10 rounded-full border border-slate-200">
+                                </div>
+                                <div>
+                                    <a href="https://www.mediafire.com/file/zs92v18299y5rvr/Braixen.cpmmodel/file" target="_blank" class="group/title">
+                                        <h2 class="text-2xl font-bold text-slate-900 group-hover/title:text-brand-600 transition-colors">Braixen Model</h2>
+                                    </a>
+                                    <p class="text-sm text-slate-500 font-medium">By SerHan-Solo</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-bold">Fire Type</span>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-600 mb-8 line-clamp-3">
+                            Brew your own Adventure with Braixen! Model belongs to the Cobblemon Team, re-animated by SerHan.
+                        </p>
+
+                        <!-- Media Preview -->
+                        <div class="mt-auto mb-6 bg-slate-900 rounded-2xl overflow-hidden aspect-video relative group/media shadow-inner border border-slate-100">
+                            <img id="braixen-video" src="https://i.ibb.co/FTVNHr4/6e677b8b-c62e-4a34-af73-94a2620b703e-editbraixennew-sketchfab-googlechrome10-12-202510-05-17pm.png" class="w-full h-full object-contain p-4 transition-opacity duration-300" alt="Braixen Preview">
+                            
+                            <!-- Overlay -->
+                            <div id="braixen-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
+                                <img id="braixen-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
+                                <button onclick="resetPreview('braixen')" class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full backdrop-blur-sm transition-colors">
+                                    <i data-lucide="x" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Carousel -->
+                        <div class="relative group/carousel mb-8">
+                            <div class="absolute -top-6 left-0 text-[10px] font-bold text-slate-400 uppercase tracking-widest opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">Preview Skins</div>
+                            
+                            <button id="braixen-nav-left" onclick="scrollCarousel('braixen', -1)" class="absolute -left-3 top-1/2 -translate-y-1/2 z-10 bg-white text-slate-700 p-1.5 rounded-full shadow-lg border border-slate-100 hidden hover:scale-110 transition-transform">
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                            </button>
+                            <button id="braixen-nav-right" onclick="scrollCarousel('braixen', 1)" class="absolute -right-3 top-1/2 -translate-y-1/2 z-10 bg-white text-slate-700 p-1.5 rounded-full shadow-lg border border-slate-100 hover:scale-110 transition-transform">
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+
+                            <div id="braixen-carousel" class="flex gap-3 overflow-x-auto snap-x scroll-smooth no-scrollbar py-2 fade-mask-x" onscroll="checkScroll('braixen')">
+                                <button onclick="showPreview('braixen', 'https://i.ibb.co/FTVNHr4/6e677b8b-c62e-4a34-af73-94a2620b703e-editbraixennew-sketchfab-googlechrome10-12-202510-05-17pm.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-braixen hover:ring-2 hover:ring-braixen/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/FTVNHr4/6e677b8b-c62e-4a34-af73-94a2620b703e-editbraixennew-sketchfab-googlechrome10-12-202510-05-17pm.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('braixen', 'https://i.ibb.co/27RjfH1b/b8444156-6754-4452-8b36-d14d6f35472b-editbraixenmodel-sketchfab-googlechrome10-12-20259-26-23pm.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-braixen hover:ring-2 hover:ring-braixen/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/27RjfH1b/b8444156-6754-4452-8b36-d14d6f35472b-editbraixenmodel-sketchfab-googlechrome10-12-20259-26-23pm.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('braixen', 'https://i.ibb.co/YFCDshYD/6ee8d852-a904-46af-b548-8b85176a4aac-editbraixen-sketchfab-googlechrome10-12-202512-55-01am.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-braixen hover:ring-2 hover:ring-braixen/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/YFCDshYD/6ee8d852-a904-46af-b548-8b85176a4aac-editbraixen-sketchfab-googlechrome10-12-202512-55-01am.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('braixen', 'https://i.ibb.co/C5B5YzM5/10e3df86-7718-46b1-9b6b-eb868d1423c2-25gbezgif-7cc072db897288b7.gif')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-braixen hover:ring-2 hover:ring-braixen/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/C5B5YzM5/10e3df86-7718-46b1-9b6b-eb868d1423c2-25gbezgif-7cc072db897288b7.gif" class="w-full h-full object-contain">
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 pt-6 border-t border-slate-50">
+                            <a href="https://www.mediafire.com/file/zs92v18299y5rvr/Braixen.cpmmodel/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-slate-200/50">
+                                <i data-lucide="download" class="w-4 h-4"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ========================================== -->
+                <!-- CUBONE MODEL (NEW) -->
+                <!-- ========================================== -->
+                <article id="cubone-model" class="bg-white rounded-3xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col scroll-mt-24">
+                    <div class="relative bg-slate-50 aspect-[16/9] lg:aspect-[2/1] border-b border-slate-100 flex items-center justify-center p-8 group overflow-hidden">
+                        <div class="absolute top-6 left-6 z-10">
+                            <span class="bg-white/90 backdrop-blur text-cubone px-3 py-1 rounded-full text-xs font-bold shadow-sm border border-stone-200">Pokémon</span>
+                        </div>
+                        <img src="https://i.ibb.co/YT3BCHYT/03a40a02-bc6e-4a4c-a3b5-3705c31ede68-cubone-3dmodelbyser21serhankol19772266287-sketchfab-googlechrom.png" 
+                             class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 drop-shadow-lg" 
+                             alt="Cubone Model">
+                    </div>
+
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="flex-shrink-0">
+                                    <img src="https://i.ibb.co/xtQw3s9L/86bf55fa-c69c-4342-aba5-264a25bb3a03-1c4fc6c8-d781-4be3-97d0-7298d1feb504.png" alt="SerHan-Solo" class="w-10 h-10 rounded-full border border-slate-200">
+                                </div>
+                                <div>
+                                    <a href="https://www.mediafire.com/file/m3y4126aojbv3vt/Cubone.cpmmodel/file" target="_blank" class="group/title">
+                                        <h2 class="text-2xl font-bold text-slate-900 group-hover/title:text-brand-600 transition-colors">Cubone Model</h2>
+                                    </a>
+                                    <p class="text-sm text-slate-500 font-medium">By SerHan-Solo</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg text-xs font-bold">Ground Type</span>
+                            </div>
+                        </div>
+
+                        <p class="text-slate-600 mb-8 line-clamp-3">
+                            Explore the large world as the Lonely Cubone. Model created by the Cobblemon Team, re-animated by SerHan.
+                        </p>
+
+                        <!-- Media Preview -->
+                        <div class="mt-auto mb-6 bg-slate-900 rounded-2xl overflow-hidden aspect-video relative group/media shadow-inner border border-slate-100">
+                            <img id="cubone-video" src="https://i.ibb.co/YT3BCHYT/03a40a02-bc6e-4a4c-a3b5-3705c31ede68-cubone-3dmodelbyser21serhankol19772266287-sketchfab-googlechrom.png" class="w-full h-full object-contain p-4 transition-opacity duration-300" alt="Cubone Preview">
+                            
+                            <!-- Overlay -->
+                            <div id="cubone-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
+                                <img id="cubone-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
+                                <button onclick="resetPreview('cubone')" class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full backdrop-blur-sm transition-colors">
+                                    <i data-lucide="x" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Carousel -->
+                        <div class="relative group/carousel mb-8">
+                            <div class="absolute -top-6 left-0 text-[10px] font-bold text-slate-400 uppercase tracking-widest opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300">Preview Skins</div>
+                            
+                            <button id="cubone-nav-left" onclick="scrollCarousel('cubone', -1)" class="absolute -left-3 top-1/2 -translate-y-1/2 z-10 bg-white text-slate-700 p-1.5 rounded-full shadow-lg border border-slate-100 hidden hover:scale-110 transition-transform">
+                                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                            </button>
+                            <button id="cubone-nav-right" onclick="scrollCarousel('cubone', 1)" class="absolute -right-3 top-1/2 -translate-y-1/2 z-10 bg-white text-slate-700 p-1.5 rounded-full shadow-lg border border-slate-100 hover:scale-110 transition-transform">
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+
+                            <div id="cubone-carousel" class="flex gap-3 overflow-x-auto snap-x scroll-smooth no-scrollbar py-2 fade-mask-x" onscroll="checkScroll('cubone')">
+                                <button onclick="showPreview('cubone', 'https://i.ibb.co/YT3BCHYT/03a40a02-bc6e-4a4c-a3b5-3705c31ede68-cubone-3dmodelbyser21serhankol19772266287-sketchfab-googlechrom.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-cubone hover:ring-2 hover:ring-cubone/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/YT3BCHYT/03a40a02-bc6e-4a4c-a3b5-3705c31ede68-cubone-3dmodelbyser21serhankol19772266287-sketchfab-googlechrom.png" class="w-full h-full object-contain">
+                                </button>
+                                <button onclick="showPreview('cubone', 'https://i.ibb.co/YFtL4GXd/c360c0a1-2ae6-4988-8ead-a2af0337be1a-minecraft-forge1-20-1-singleplayer11-12-20255-54-17pm.png')" class="flex-shrink-0 h-16 w-16 bg-slate-50 rounded-xl border border-slate-200 p-1 hover:border-cubone hover:ring-2 hover:ring-cubone/20 transition-all snap-start">
+                                    <img src="https://i.ibb.co/YFtL4GXd/c360c0a1-2ae6-4988-8ead-a2af0337be1a-minecraft-forge1-20-1-singleplayer11-12-20255-54-17pm.png" class="w-full h-full object-contain">
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 pt-6 border-t border-slate-50">
+                            <a href="https://www.mediafire.com/file/m3y4126aojbv3vt/Cubone.cpmmodel/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-3 px-4 rounded-xl hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-slate-200/50">
+                                <i data-lucide="download" class="w-4 h-4"></i> Download
                             </a>
                         </div>
                     </div>
@@ -701,10 +956,10 @@
 
         // Init
         window.addEventListener('load', () => {
-            ['mario', 'weegee', 'sonic'].forEach(id => checkScroll(id));
+            ['mario', 'weegee', 'sonic', 'noivern', 'braixen', 'cubone'].forEach(id => checkScroll(id));
         });
         window.addEventListener('resize', () => {
-            ['mario', 'weegee', 'sonic'].forEach(id => checkScroll(id));
+            ['mario', 'weegee', 'sonic', 'noivern', 'braixen', 'cubone'].forEach(id => checkScroll(id));
         });
 
         // Mobile Menu
