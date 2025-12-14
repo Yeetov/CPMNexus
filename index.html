@@ -220,6 +220,9 @@
 
     <!-- Data & Application Logic -->
     <script>
+        // === Global State ===
+        let userAge = 0;
+
         // === Data Source ===
         const cpmData = [
             {
@@ -315,7 +318,7 @@
                         description: "Sonic unleashed! Finally a sonic model in a while. (Export is not high effort and project is meant for building off of).",
                         tag: "Standalone",
                         color: "sonic",
-                        ratings: { pegi: "7", esrb: "E10+", minAge: 7 },
+                        ratings: { pegi: "3", esrb: "E", minAge: 3 },
                         media: { type: "image", src: "https://i.ibb.co/Nd6xCwMc/image.png" },
                         download: "https://www.mediafire.com/file/dhc1d18nii101mv/SonicOM_Figura+-+Converted.cpmproject/file",
                         discord: "https://discord.com/users/1064293294038859920",
@@ -541,7 +544,6 @@
                 ]
             }
         ];
-
         // === Render Logic ===
 
         function renderNavigation() {
