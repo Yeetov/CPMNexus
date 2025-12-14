@@ -28,17 +28,18 @@
                             600: '#2563eb',
                             900: '#1e3a8a',
                         },
+                        // Dynamic Series Colors
                         mario: '#e11d48',
                         weegee: '#16a34a',
                         sonic: '#0284c7',
                         fnaf: '#d97706',
+                        pokemon: '#eab308', // Yellow for Pokemon Banner
                         noivern: '#7c3aed',
                         braixen: '#ea580c',
                         cubone: '#78716c',
-                        pokemon: '#eab308',
                         tadc: '#c026d3',
+                        anime: '#a855f7',
                         wildlife: '#10b981',
-                        anime: '#a855f7', // Purple for Anime
                     },
                     boxShadow: {
                         'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
@@ -69,10 +70,16 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #94a3b8; 
         }
-        
         .fade-mask-x {
             mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
@@ -91,14 +98,8 @@
                 <span class="font-bold text-xl text-slate-900 tracking-tight">CPM Nexus</span>
             </div>
         </div>
-        <div class="hidden xl:flex items-center gap-6 text-sm font-semibold text-slate-500">
-            <a href="#mario-series" class="hover:text-mario transition-colors">Mario</a>
-            <a href="#sonic-series" class="hover:text-sonic transition-colors">Sonic</a>
-            <a href="#fnaf-series" class="hover:text-fnaf transition-colors">FNaF</a>
-            <a href="#pokemon-series" class="hover:text-noivern transition-colors">Pokémon</a>
-            <a href="#tadc-series" class="hover:text-tadc transition-colors">Digital Circus</a>
-            <a href="#anime-series" class="hover:text-anime transition-colors">Anime</a>
-            <a href="#wildlife-series" class="hover:text-wildlife transition-colors">Wildlife</a>
+        <div id="desktop-nav-links" class="hidden xl:flex items-center gap-6 text-sm font-semibold text-slate-500">
+            <!-- Populated via JS -->
         </div>
     </nav>
 
@@ -110,15 +111,8 @@
                 <h1 class="font-bold text-xl text-slate-900">Menu</h1>
                 <button id="close-sidebar" class="text-slate-400 hover:text-slate-600 bg-slate-50 p-2 rounded-lg"><i data-lucide="x" class="w-5 h-5"></i></button>
             </div>
-            <nav class="space-y-1">
-                <a href="#hero" class="block px-4 py-2 text-slate-600 font-semibold hover:bg-slate-50 rounded-lg">Home</a>
-                <a href="#mario-series" class="block px-4 py-2 text-slate-600 font-medium hover:bg-slate-50 rounded-lg">Mario Series</a>
-                <a href="#sonic-series" class="block px-4 py-2 text-slate-600 font-medium hover:bg-slate-50 rounded-lg">Sonic Series</a>
-                <a href="#fnaf-series" class="block px-4 py-2 text-slate-600 font-medium hover:bg-slate-50 rounded-lg">FNaF Series</a>
-                <a href="#pokemon-series" class="block px-4 py-2 text-slate-600 font-medium hover:bg-slate-50 rounded-lg">Pokémon Series</a>
-                <a href="#tadc-series" class="block px-4 py-2 text-slate-600 font-medium hover:bg-slate-50 rounded-lg">Digital Circus</a>
-                <a href="#anime-series" class="block px-4 py-2 text-slate-600 font-medium hover:bg-slate-50 rounded-lg">Anime Series</a>
-                <a href="#wildlife-series" class="block px-4 py-2 text-slate-600 font-medium hover:bg-slate-50 rounded-lg">Wildlife Series</a>
+            <nav id="mobile-nav-links" class="space-y-1">
+                <!-- Populated via JS -->
             </nav>
         </div>
     </aside>
@@ -136,7 +130,7 @@
                     High-quality, community-sourced CPM rigs. Animated, free, and ready to use.
                 </p>
                 <div class="flex flex-wrap gap-8 justify-center lg:justify-start text-sm font-semibold text-slate-400 uppercase tracking-wide">
-                    <div><span class="text-2xl font-bold text-slate-900 block normal-case">11</span> Collections</div>
+                    <div><span class="text-2xl font-bold text-slate-900 block normal-case" id="stat-collections">0</span> Collections</div>
                     <div class="w-px h-10 bg-slate-200 hidden sm:block"></div>
                     <div><span class="text-2xl font-bold text-slate-900 block normal-case">35k+</span> Downloads</div>
                     <div class="w-px h-10 bg-slate-200 hidden sm:block"></div>
@@ -145,586 +139,9 @@
             </div>
         </header>
 
-        <!-- Content Area -->
-        <div class="px-6 lg:px-12 pb-20 max-w-[1920px] mx-auto space-y-20">
-            
-            <!-- MARIO SERIES SECTION -->
-            <section id="mario-series" class="scroll-mt-24">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="h-10 w-2 rounded-full bg-mario"></div>
-                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Super Mario Series</h2>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                    
-                    <!-- MARIO PACK -->
-                    <article id="mario-pack" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                        <!-- Media Header -->
-                        <div id="mario-media-container" class="relative aspect-video bg-slate-900 overflow-hidden group/media">
-                            <iframe id="mario-video" class="w-full h-full absolute inset-0 transition-opacity duration-300" src="https://www.youtube.com/embed/fy2re9YKYQM?autoplay=1&mute=1&loop=1&playlist=fy2re9YKYQM&controls=0" title="Mario Showcase" frameborder="0" allowfullscreen></iframe>
-                            <!-- Overlay -->
-                            <div id="mario-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
-                                <img id="mario-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
-                                <button onclick="resetPreview('mario')" class="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-colors"><i data-lucide="x" class="w-4 h-4"></i></button>
-                            </div>
-                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                                <span class="bg-mario/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">Mario Series</span>
-                            </div>
-                        </div>
-
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="flex items-center gap-3">
-                                    <a href="https://ko-fi.com/alphs20" target="_blank" class="flex-shrink-0"><img src="https://i.ibb.co/206k1PJr/4b836f5f-4428-461b-9fb6-426b5caebf19-e1491a0a-1b0f-479c-89dc-1e19b6560516.png" alt="Alphs" class="w-10 h-10 rounded-full border border-slate-100"></a>
-                                    <div>
-                                        <a href="https://www.mediafire.com/file/3sihup8u3jwthw0/MarioSkinPack.zip/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2"><h2 class="text-xl font-bold text-slate-900 leading-tight">Alphs' Mario Pack</h2></a>
-                                        <a href="https://ko-fi.com/alphs20" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors">By Alphs</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">10 fully animated characters including Mario, Luigi, and Bowser. Features custom gestures and Pehkui hitboxes.</p>
-                            
-                            <!-- Skin Grid -->
-                            <div class="mt-auto mb-6">
-                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Models Included</div>
-                                <div class="flex flex-wrap gap-2">
-                                    <button onclick="showPreview('mario', 'https://i.ibb.co/jvMPJD2r/b2826359-e95e-4e30-9141-1cabb7782c92-mariostar.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-mario transition-colors"><img src="https://i.ibb.co/jvMPJD2r/b2826359-e95e-4e30-9141-1cabb7782c92-mariostar.png" class="w-full h-full object-contain" title="Mario"></button>
-                                    <button onclick="showPreview('mario', 'https://i.ibb.co/LdXQTHrn/872bc07a-3114-4708-b4e9-786ae53050ba-poltergust.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-mario transition-colors"><img src="https://i.ibb.co/LdXQTHrn/872bc07a-3114-4708-b4e9-786ae53050ba-poltergust.png" class="w-full h-full object-contain" title="Luigi"></button>
-                                    <button onclick="showPreview('mario', 'https://i.ibb.co/fGLzFWPr/1d2ded39-8f28-4825-925c-1cba0ece4126-peachtaunt.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-mario transition-colors"><img src="https://i.ibb.co/fGLzFWPr/1d2ded39-8f28-4825-925c-1cba0ece4126-peachtaunt.png" class="w-full h-full object-contain" title="Peach"></button>
-                                    <button onclick="showPreview('mario', 'https://i.ibb.co/hx3NWs5z/f7d375b4-ecb4-4250-835c-e7cee54f5db0-toswaterfall.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-mario transition-colors"><img src="https://i.ibb.co/hx3NWs5z/f7d375b4-ecb4-4250-835c-e7cee54f5db0-toswaterfall.png" class="w-full h-full object-contain" title="Toad"></button>
-                                    <button onclick="showPreview('mario', 'https://i.ibb.co/mry2xbzv/1c80ab1e-6931-4bdd-a174-0fa50f06edbe-yoshitongue.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-mario transition-colors"><img src="https://i.ibb.co/mry2xbzv/1c80ab1e-6931-4bdd-a174-0fa50f06edbe-yoshitongue.png" class="w-full h-full object-contain" title="Yoshi"></button>
-                                    <button onclick="showPreview('mario', 'https://i.ibb.co/ds0MdcZr/756accad-1e80-478c-9188-a56b7dcb78a8-koopafreerunning.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-mario transition-colors"><img src="https://i.ibb.co/ds0MdcZr/756accad-1e80-478c-9188-a56b7dcb78a8-koopafreerunning.png" class="w-full h-full object-contain" title="Koopa"></button>
-                                    <button onclick="showPreview('mario', 'https://i.ibb.co/Wp095k7t/b420cc76-8736-4a55-8809-8e78b07bf5b7-bowserlaugh.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-mario transition-colors"><img src="https://i.ibb.co/Wp095k7t/b420cc76-8736-4a55-8809-8e78b07bf5b7-bowserlaugh.png" class="w-full h-full object-contain" title="Bowser"></button>
-                                    <span class="h-10 w-10 flex items-center justify-center bg-slate-100 rounded-lg text-xs font-bold text-slate-400">+3</span>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-3 pt-4 border-t border-slate-50">
-                                <a href="https://www.mediafire.com/file/3sihup8u3jwthw0/MarioSkinPack.zip/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
-                                <a href="https://ko-fi.com/Post/SUPER-MARIO-Minecraft-CPM-Skin-Pack-FREE-DOWNLO-F1F5WL0H5" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors"><i data-lucide="coffee" class="w-4 h-4"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- WEEGEE PACK -->
-                    <article id="weegee-pack" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                        <div id="weegee-media-container" class="relative aspect-video bg-slate-100 overflow-hidden group/media">
-                            <img id="weegee-video" src="https://i.ibb.co/zHL2byQb/5b8f8b54-4968-4661-ae13-eb59e3e05ade-weegeeeyes.png" class="w-full h-full object-contain p-4 transition-opacity duration-300">
-                            <div id="weegee-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
-                                <img id="weegee-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
-                                <button onclick="resetPreview('weegee')" class="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-colors"><i data-lucide="x" class="w-4 h-4"></i></button>
-                            </div>
-                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                                <span class="bg-weegee/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">Mario Series</span>
-                            </div>
-                        </div>
-
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="flex items-center gap-3">
-                                    <a href="https://ko-fi.com/alphs20" target="_blank" class="flex-shrink-0"><img src="https://i.ibb.co/206k1PJr/4b836f5f-4428-461b-9fb6-426b5caebf19-e1491a0a-1b0f-479c-89dc-1e19b6560516.png" alt="Alphs" class="w-10 h-10 rounded-full border border-slate-100"></a>
-                                    <div>
-                                        <a href="https://www.mediafire.com/file/qn0uifhvdgxjjdk/weegeeCPMskin.zip/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2"><h2 class="text-xl font-bold text-slate-900 leading-tight">Weegee CPM Skin</h2></a>
-                                        <a href="https://ko-fi.com/alphs20" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors">By Alphs</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">Obey... WEEGEE. Includes Weegee and Weegee (Fair Play). Fully animated and ready to haunt your Minecraft world.</p>
-                            
-                            <div class="mt-auto mb-6">
-                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Models Included</div>
-                                <div class="flex flex-wrap gap-2">
-                                    <button onclick="showPreview('weegee', 'https://i.ibb.co/zHL2byQb/5b8f8b54-4968-4661-ae13-eb59e3e05ade-weegeeeyes.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-weegee transition-colors"><img src="https://i.ibb.co/zHL2byQb/5b8f8b54-4968-4661-ae13-eb59e3e05ade-weegeeeyes.png" class="w-full h-full object-contain" title="Weegee Stare"></button>
-                                    <button onclick="showPreview('weegee', 'https://i.ibb.co/fzMpQysf/6e3b5e83-81d7-4a07-b656-927b3dbc9232-weegeebig.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-weegee transition-colors"><img src="https://i.ibb.co/fzMpQysf/6e3b5e83-81d7-4a07-b656-927b3dbc9232-weegeebig.png" class="w-full h-full object-contain" title="Weegee Big"></button>
-                                    <button onclick="showPreview('weegee', 'https://i.ibb.co/jkTQ8zJ2/09f3a4fb-731c-45ca-a4a7-6b154d497a38-mamaluigi.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-weegee transition-colors"><img src="https://i.ibb.co/jkTQ8zJ2/09f3a4fb-731c-45ca-a4a7-6b154d497a38-mamaluigi.png" class="w-full h-full object-contain" title="Mama Luigi"></button>
-                                    <button onclick="showPreview('weegee', 'https://i.ibb.co/LXMvT1g2/68e25600-3e00-46b5-ae1d-79530883cf30-lazar.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-weegee transition-colors"><img src="https://i.ibb.co/LXMvT1g2/68e25600-3e00-46b5-ae1d-79530883cf30-lazar.png" class="w-full h-full object-contain" title="Lazar"></button>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-3 pt-4 border-t border-slate-50">
-                                <a href="https://www.mediafire.com/file/qn0uifhvdgxjjdk/weegeeCPMskin.zip/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
-                                <a href="https://ko-fi.com/alphs20" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors"><i data-lucide="coffee" class="w-4 h-4"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- AQUARIUSALEXX MARIO (NEW) -->
-                    <article id="alexx-mario" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                        <div class="relative aspect-video bg-red-50 overflow-hidden group/media">
-                            <img src="https://i.ibb.co/1f58R9W0/image.png" class="w-full h-full object-contain p-4 transition-transform duration-500 hover:scale-105">
-                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                                <span class="bg-mario/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">Mario Series</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="flex items-center gap-3">
-                                    <a href="https://discord.com/users/680910843608563776" target="_blank" class="flex-shrink-0"><img src="https://i.ibb.co/G4VSrWHX/e8994aeae5090ea30a0fb60d999587d5.png" alt="AquariusAlexx" class="w-10 h-10 rounded-full border border-slate-100"></a>
-                                    <div>
-                                        <a href="https://www.mediafire.com/file/ecn37yt0pk6qj5q/Mario.cpmmodel/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2"><h2 class="text-xl font-bold text-slate-900 leading-tight">Mario Model</h2></a>
-                                        <a href="https://discord.com/users/680910843608563776" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors">By AquariusAlexx</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">Super Mario! A 1:1 Recreation of the Mario Mash-Up Pack Mario.</p>
-                            <div class="mt-auto flex gap-3 pt-4 border-t border-slate-50">
-                                <a href="https://www.mediafire.com/file/ecn37yt0pk6qj5q/Mario.cpmmodel/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
-                                <a href="https://discord.com/users/680910843608563776" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors" title="Discord"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <!-- SONIC SERIES SECTION -->
-            <section id="sonic-series" class="scroll-mt-24">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="h-10 w-2 rounded-full bg-sonic"></div>
-                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Sonic the Hedgehog Series</h2>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                    <!-- SONIC PACK -->
-                    <article id="sonic-pack" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                        <div id="sonic-media-container" class="relative aspect-video bg-slate-900 overflow-hidden group/media">
-                            <iframe id="sonic-video" class="w-full h-full absolute inset-0 transition-opacity duration-300" src="https://www.youtube.com/embed/qph8ML9eSHs?autoplay=1&mute=1&loop=1&playlist=qph8ML9eSHs&controls=0" title="Sonic Showcase" frameborder="0" allowfullscreen></iframe>
-                            <div id="sonic-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
-                                <img id="sonic-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
-                                <button onclick="resetPreview('sonic')" class="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-colors"><i data-lucide="x" class="w-4 h-4"></i></button>
-                            </div>
-                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                                <span class="bg-sonic/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">Sonic Series</span>
-                            </div>
-                        </div>
-
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="flex items-center gap-3">
-                                    <a href="https://ko-fi.com/alphs20" target="_blank" class="flex-shrink-0"><img src="https://i.ibb.co/206k1PJr/4b836f5f-4428-461b-9fb6-426b5caebf19-e1491a0a-1b0f-479c-89dc-1e19b6560516.png" alt="Alphs" class="w-10 h-10 rounded-full border border-slate-100"></a>
-                                    <div>
-                                        <a href="https://www.mediafire.com/file/p1um20mocpbtm1t/AlphsSonictheHedgehogSkinPackv1.2.zip/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2"><h2 class="text-xl font-bold text-slate-900 leading-tight">Alphs' Sonic Pack</h2></a>
-                                        <a href="https://ko-fi.com/alphs20" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors">By Alphs</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">Featuring 6 unique skins including Sonic, Tails, Knuckles, Amy, and Metal Sonic. Includes custom speed animations.</p>
-                            
-                            <div class="mt-auto mb-6">
-                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Models Included</div>
-                                <div class="flex flex-wrap gap-2">
-                                    <button onclick="showPreview('sonic', 'https://i.ibb.co/1GJFTMyW/77b87853-5d2b-48f5-bd47-8ba55f3733cd-sc-sonic-1.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-sonic transition-colors"><img src="https://i.ibb.co/1GJFTMyW/77b87853-5d2b-48f5-bd47-8ba55f3733cd-sc-sonic-1.png" class="w-full h-full object-contain" title="Sonic"></button>
-                                    <button onclick="showPreview('sonic', 'https://i.ibb.co/7t0XYg9F/566d72ce-ff9c-48a1-bf50-55f9cd37f258-knux.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-sonic transition-colors"><img src="https://i.ibb.co/7t0XYg9F/566d72ce-ff9c-48a1-bf50-55f9cd37f258-knux.png" class="w-full h-full object-contain" title="Knuckles"></button>
-                                    <button onclick="showPreview('sonic', 'https://i.ibb.co/bjqGFq3D/98e97312-3d67-4996-b086-c7a2e74716d6-sc-sonic-4.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-sonic transition-colors"><img src="https://i.ibb.co/bjqGFq3D/98e97312-3d67-4996-b086-c7a2e74716d6-sc-sonic-4.png" class="w-full h-full object-contain" title="Tails"></button>
-                                    <button onclick="showPreview('sonic', 'https://i.ibb.co/VYv9zPBc/4c837355-a68d-47e3-8e2c-57c093bf09a8-sc-sonic-3.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-sonic transition-colors"><img src="https://i.ibb.co/VYv9zPBc/4c837355-a68d-47e3-8e2c-57c093bf09a8-sc-sonic-3.png" class="w-full h-full object-contain" title="Pose"></button>
-                                    <button onclick="showPreview('sonic', 'https://i.ibb.co/Y7wNB6hB/941003e4-5046-4c08-85d4-066d06a8980b-sc-sonic-5.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-sonic transition-colors"><img src="https://i.ibb.co/Y7wNB6hB/941003e4-5046-4c08-85d4-066d06a8980b-sc-sonic-5.png" class="w-full h-full object-contain" title="Metal Sonic"></button>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-3 pt-4 border-t border-slate-50">
-                                <a href="https://www.mediafire.com/file/p1um20mocpbtm1t/AlphsSonictheHedgehogSkinPackv1.2.zip/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
-                                <a href="https://ko-fi.com/Post/Alphs-SONIC-THE-HEDGEHOG-Skin-Pack-S6S21GVCYR" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors"><i data-lucide="coffee" class="w-4 h-4"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- ZARETHTHEWYVERN SONIC (NEW) -->
-                    <article id="zareth-sonic" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                        <div class="relative aspect-video bg-blue-50 overflow-hidden group/media">
-                            <img src="https://i.ibb.co/Nd6xCwMc/image.png" class="w-full h-full object-contain p-4 transition-transform duration-500 hover:scale-105">
-                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                                <span class="bg-sonic/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">Sonic Series</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="flex items-center gap-3">
-                                    <a href="https://discord.com/users/1064293294038859920" target="_blank" class="flex-shrink-0">
-                                        <img src="https://i.ibb.co/Q72krBt6/807cf5e2fdd26e72cdf3bfbb747f69d9.png" alt="ZarethTheWyvern" class="w-10 h-10 rounded-full border border-slate-100">
-                                    </a>
-                                    <div>
-                                        <a href="https://www.mediafire.com/file/dhc1d18nii101mv/SonicOM_Figura+-+Converted.cpmproject/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2">
-                                            <h2 class="text-xl font-bold text-slate-900 leading-tight">Sonic Unleashed</h2>
-                                        </a>
-                                        <a href="https://discord.com/users/1064293294038859920" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors" title="Discord">By ZarethTheWyvern</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">Sonic unleashed! Finally a sonic model in a while. (Export is not high effort and project is meant for building off of).</p>
-                            <div class="mt-auto flex gap-3 pt-4 border-t border-slate-50">
-                                <a href="https://www.mediafire.com/file/dhc1d18nii101mv/SonicOM_Figura+-+Converted.cpmproject/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm">
-                                    <i data-lucide="download" class="w-4 h-4"></i> Download
-                                </a>
-                                <a href="https://discord.com/users/1064293294038859920" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors" title="Discord">
-                                    <i data-lucide="message-circle" class="w-4 h-4"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <!-- POKEMON SERIES SECTION -->
-            <section id="pokemon-series" class="scroll-mt-24">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="h-10 w-2 rounded-full bg-pokemon"></div>
-                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Pokémon Series</h2>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                    
-                    <!-- NOIVERN MODEL -->
-                    <article id="noivern-model" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                        <div id="noivern-media-container" class="relative aspect-video bg-purple-50 overflow-hidden group/media">
-                            <img id="noivern-video" src="https://i.ibb.co/tPPb6VLW/image.png" class="w-full h-full object-contain p-4 transition-opacity duration-300">
-                            <div id="noivern-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
-                                <img id="noivern-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
-                                <button onclick="resetPreview('noivern')" class="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-colors"><i data-lucide="x" class="w-4 h-4"></i></button>
-                            </div>
-                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                                <span class="bg-noivern/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">Pokémon</span>
-                            </div>
-                        </div>
-
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="flex items-center gap-3">
-                                    <a href="https://ko-fi.com/serhansolo" target="_blank" class="flex-shrink-0"><img src="https://i.ibb.co/xtQw3s9L/86bf55fa-c69c-4342-aba5-264a25bb3a03-1c4fc6c8-d781-4be3-97d0-7298d1feb504.png" alt="SerHan-Solo" class="w-10 h-10 rounded-full border border-slate-100"></a>
-                                    <div>
-                                        <a href="https://www.mediafire.com/file/pd9xzjeezmi3d9k/Noivern.cpmmodel/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2"><h2 class="text-xl font-bold text-slate-900 leading-tight">Noivern Model</h2></a>
-                                        <a href="https://ko-fi.com/serhansolo" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors">By SerHan-Solo</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">Soar through the night as the fierce Noivern! Model belongs to the Cobblemon Team, re-animated by SerHan.</p>
-                            
-                            <div class="mt-auto mb-6">
-                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Previews</div>
-                                <div class="flex flex-wrap gap-2">
-                                    <button onclick="showPreview('noivern', 'https://i.ibb.co/tPPb6VLW/image.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-noivern transition-colors"><img src="https://i.ibb.co/tPPb6VLW/image.png" class="w-full h-full object-contain" title="Idle"></button>
-                                    <button onclick="showPreview('noivern', 'https://i.ibb.co/5XkGqn6q/fdfc0122-d073-483b-a983-b4a63ddcf773-minecraft-1-21-112-12-20255-57-47pm.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-noivern transition-colors"><img src="https://i.ibb.co/5XkGqn6q/fdfc0122-d073-483b-a983-b4a63ddcf773-minecraft-1-21-112-12-20255-57-47pm.png" class="w-full h-full object-contain" title="Flying"></button>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-3 pt-4 border-t border-slate-50">
-                                <a href="https://www.mediafire.com/file/pd9xzjeezmi3d9k/Noivern.cpmmodel/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
-                                <a href="https://ko-fi.com/serhansolo" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors"><i data-lucide="coffee" class="w-4 h-4"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- BRAIXEN MODEL -->
-                    <article id="braixen-model" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                        <div id="braixen-media-container" class="relative aspect-video bg-orange-50 overflow-hidden group/media">
-                            <img id="braixen-video" src="https://i.ibb.co/FTVNHr4/6e677b8b-c62e-4a34-af73-94a2620b703e-editbraixennew-sketchfab-googlechrome10-12-202510-05-17pm.png" class="w-full h-full object-contain p-4 transition-opacity duration-300">
-                            <div id="braixen-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
-                                <img id="braixen-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
-                                <button onclick="resetPreview('braixen')" class="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-colors"><i data-lucide="x" class="w-4 h-4"></i></button>
-                            </div>
-                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                                <span class="bg-braixen/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">Pokémon</span>
-                            </div>
-                        </div>
-
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="flex items-center gap-3">
-                                    <a href="https://ko-fi.com/serhansolo" target="_blank" class="flex-shrink-0"><img src="https://i.ibb.co/xtQw3s9L/86bf55fa-c69c-4342-aba5-264a25bb3a03-1c4fc6c8-d781-4be3-97d0-7298d1feb504.png" alt="SerHan-Solo" class="w-10 h-10 rounded-full border border-slate-100"></a>
-                                    <div>
-                                        <a href="https://www.mediafire.com/file/zs92v18299y5rvr/Braixen.cpmmodel/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2"><h2 class="text-xl font-bold text-slate-900 leading-tight">Braixen Model</h2></a>
-                                        <a href="https://ko-fi.com/serhansolo" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors">By SerHan-Solo</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">Brew your own Adventure with Braixen! Model belongs to the Cobblemon Team, re-animated by SerHan.</p>
-                            
-                            <div class="mt-auto mb-6">
-                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Previews</div>
-                                <div class="flex flex-wrap gap-2">
-                                    <button onclick="showPreview('braixen', 'https://i.ibb.co/FTVNHr4/6e677b8b-c62e-4a34-af73-94a2620b703e-editbraixennew-sketchfab-googlechrome10-12-202510-05-17pm.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-braixen transition-colors"><img src="https://i.ibb.co/FTVNHr4/6e677b8b-c62e-4a34-af73-94a2620b703e-editbraixennew-sketchfab-googlechrome10-12-202510-05-17pm.png" class="w-full h-full object-contain" title="Idle"></button>
-                                    <button onclick="showPreview('braixen', 'https://i.ibb.co/27RjfH1b/b8444156-6754-4452-8b36-d14d6f35472b-editbraixenmodel-sketchfab-googlechrome10-12-20259-26-23pm.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-braixen transition-colors"><img src="https://i.ibb.co/27RjfH1b/b8444156-6754-4452-8b36-d14d6f35472b-editbraixenmodel-sketchfab-googlechrome10-12-20259-26-23pm.png" class="w-full h-full object-contain" title="Pose 1"></button>
-                                    <button onclick="showPreview('braixen', 'https://i.ibb.co/YFCDshYD/6ee8d852-a904-46af-b548-8b85176a4aac-editbraixen-sketchfab-googlechrome10-12-202512-55-01am.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-braixen transition-colors"><img src="https://i.ibb.co/YFCDshYD/6ee8d852-a904-46af-b548-8b85176a4aac-editbraixen-sketchfab-googlechrome10-12-202512-55-01am.png" class="w-full h-full object-contain" title="Pose 2"></button>
-                                    <button onclick="showPreview('braixen', 'https://i.ibb.co/C5B5YzM5/10e3df86-7718-46b1-9b6b-eb868d1423c2-25gbezgif-7cc072db897288b7.gif')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-braixen transition-colors"><img src="https://i.ibb.co/C5B5YzM5/10e3df86-7718-46b1-9b6b-eb868d1423c2-25gbezgif-7cc072db897288b7.gif" class="w-full h-full object-contain" title="Spin"></button>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-3 pt-4 border-t border-slate-50">
-                                <a href="https://www.mediafire.com/file/zs92v18299y5rvr/Braixen.cpmmodel/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
-                                <a href="https://ko-fi.com/serhansolo" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors"><i data-lucide="coffee" class="w-4 h-4"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- CUBONE MODEL -->
-                    <article id="cubone-model" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                        <div id="cubone-media-container" class="relative aspect-video bg-stone-100 overflow-hidden group/media">
-                            <img id="cubone-video" src="https://i.ibb.co/YT3BCHYT/03a40a02-bc6e-4a4c-a3b5-3705c31ede68-cubone-3dmodelbyser21serhankol19772266287-sketchfab-googlechrom.png" class="w-full h-full object-contain p-4 transition-opacity duration-300">
-                            <div id="cubone-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
-                                <img id="cubone-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
-                                <button onclick="resetPreview('cubone')" class="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-colors"><i data-lucide="x" class="w-4 h-4"></i></button>
-                            </div>
-                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                                <span class="bg-cubone/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">Pokémon</span>
-                            </div>
-                        </div>
-
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="flex items-center gap-3">
-                                    <a href="https://ko-fi.com/serhansolo" target="_blank" class="flex-shrink-0"><img src="https://i.ibb.co/xtQw3s9L/86bf55fa-c69c-4342-aba5-264a25bb3a03-1c4fc6c8-d781-4be3-97d0-7298d1feb504.png" alt="SerHan-Solo" class="w-10 h-10 rounded-full border border-slate-100"></a>
-                                    <div>
-                                        <a href="https://www.mediafire.com/file/m3y4126aojbv3vt/Cubone.cpmmodel/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2"><h2 class="text-xl font-bold text-slate-900 leading-tight">Cubone Model</h2></a>
-                                        <a href="https://ko-fi.com/serhansolo" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors">By SerHan-Solo</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">Explore the large world as the Lonely Cubone. Model created by the Cobblemon Team, re-animated by SerHan.</p>
-                            
-                            <div class="mt-auto mb-6">
-                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Previews</div>
-                                <div class="flex flex-wrap gap-2">
-                                    <button onclick="showPreview('cubone', 'https://i.ibb.co/YT3BCHYT/03a40a02-bc6e-4a4c-a3b5-3705c31ede68-cubone-3dmodelbyser21serhankol19772266287-sketchfab-googlechrom.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-cubone transition-colors"><img src="https://i.ibb.co/YT3BCHYT/03a40a02-bc6e-4a4c-a3b5-3705c31ede68-cubone-3dmodelbyser21serhankol19772266287-sketchfab-googlechrom.png" class="w-full h-full object-contain" title="Idle"></button>
-                                    <button onclick="showPreview('cubone', 'https://i.ibb.co/YFtL4GXd/c360c0a1-2ae6-4988-8ead-a2af0337be1a-minecraft-forge1-20-1-singleplayer11-12-20255-54-17pm.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-cubone transition-colors"><img src="https://i.ibb.co/YFtL4GXd/c360c0a1-2ae6-4988-8ead-a2af0337be1a-minecraft-forge1-20-1-singleplayer11-12-20255-54-17pm.png" class="w-full h-full object-contain" title="In-Game"></button>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-3 pt-4 border-t border-slate-50">
-                                <a href="https://www.mediafire.com/file/m3y4126aojbv3vt/Cubone.cpmmodel/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
-                                <a href="https://ko-fi.com/serhansolo" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors"><i data-lucide="coffee" class="w-4 h-4"></i></a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <!-- FNAF SERIES SECTION -->
-            <section id="fnaf-series" class="scroll-mt-24">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="h-10 w-2 rounded-full bg-fnaf"></div>
-                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Five Nights at Freddy's Series</h2>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                    <!-- FNAF PACK -->
-                    <article id="fnaf-pack" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                        <div id="fnaf-media-container" class="relative aspect-video bg-amber-50 overflow-hidden group/media">
-                            <img id="fnaf-video" src="https://i.ibb.co/KxfX6H0h/d4cbab8b-bd67-486e-afcb-5e5f8abe0960-fnafingrender1.png" class="w-full h-full object-contain p-4 transition-opacity duration-300">
-                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                                <span class="bg-fnaf/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">FNaF Series</span>
-                            </div>
-                        </div>
-
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="flex items-center gap-3">
-                                    <a href="https://ko-fi.com/inkyinkylillylilly/" target="_blank" class="flex-shrink-0"><img src="https://i.ibb.co/40BtWPq/3faa7f76-558d-4a6d-ab6a-68a2d332ea25-4f7ef870-646f-43af-b0ec-17e803853232.png" alt="InkyLilly" class="w-10 h-10 rounded-full border border-slate-100"></a>
-                                    <div>
-                                        <a href="https://www.mediafire.com/file/xx5h47oxmqbv6e7/FNaF+1+Pack.zip/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2"><h2 class="text-xl font-bold text-slate-900 leading-tight">Five Nights at Freddy's 1</h2></a>
-                                        <a href="https://ko-fi.com/inkyinkylillylilly/" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors">By InkyLilly</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">A small Minecraft Player Model pack of the FNaF 1 animatronics + Crying Child.</p>
-                            
-                            <div class="mt-auto mb-6">
-                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Included Characters</div>
-                                <div class="flex flex-wrap gap-1.5">
-                                    <span class="px-2 py-1 bg-slate-50 border border-slate-200 rounded text-[10px] font-semibold text-slate-500">Freddy</span>
-                                    <span class="px-2 py-1 bg-slate-50 border border-slate-200 rounded text-[10px] font-semibold text-slate-500">Bonnie</span>
-                                    <span class="px-2 py-1 bg-slate-50 border border-slate-200 rounded text-[10px] font-semibold text-slate-500">Chica</span>
-                                    <span class="px-2 py-1 bg-slate-50 border border-slate-200 rounded text-[10px] font-semibold text-slate-500">Foxy</span>
-                                    <span class="px-2 py-1 bg-slate-50 border border-slate-200 rounded text-[10px] font-semibold text-slate-500">Golden Freddy</span>
-                                    <span class="px-2 py-1 bg-slate-50 border border-slate-200 rounded text-[10px] font-semibold text-slate-500">Crying Child</span>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-3 pt-4 border-t border-slate-50">
-                                <a href="https://www.mediafire.com/file/xx5h47oxmqbv6e7/FNaF+1+Pack.zip/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
-                                <a href="https://ko-fi.com/inkyinkylillylilly/" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors"><i data-lucide="coffee" class="w-4 h-4"></i></a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <!-- TADC SERIES SECTION -->
-            <section id="tadc-series" class="scroll-mt-24">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="h-10 w-2 rounded-full bg-tadc"></div>
-                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight">The Amazing Digital Circus Series</h2>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                    
-                    <!-- JAX MODEL -->
-                    <article id="jax-model" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                        <div class="relative aspect-video bg-fuchsia-50 overflow-hidden group/media">
-                            <img src="https://i.ibb.co/ksh4SBGy/image.png" class="w-full h-full object-contain p-4 transition-transform duration-500 hover:scale-105">
-                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                                <span class="bg-tadc/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">Digital Circus</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="flex items-center gap-3">
-                                    <a href="https://discord.com/users/866480501959426079" target="_blank" class="flex-shrink-0"><img src="https://i.ibb.co/2Yqt6jD1/4724da3717d8ce63e1a4d2107f1e79c4.png" alt="Caine" class="w-10 h-10 rounded-full border border-slate-100"></a>
-                                    <div>
-                                        <a href="https://www.mediafire.com/file/rtcou46m45p1icg/Jax.cpmproject/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2"><h2 class="text-xl font-bold text-slate-900 leading-tight">Jax Model</h2></a>
-                                        <a href="https://discord.com/users/866480501959426079" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors" title="Discord">By Caine</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">The mischievous rabbit from The Amazing Digital Circus.</p>
-                            <div class="mt-auto flex gap-3 pt-4 border-t border-slate-50">
-                                <a href="https://www.mediafire.com/file/rtcou46m45p1icg/Jax.cpmproject/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
-                                <a href="https://discord.com/users/866480501959426079" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors" title="Discord"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- KINGER MODEL -->
-                    <article id="kinger-model" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                        <div class="relative aspect-video bg-fuchsia-50 overflow-hidden group/media">
-                            <img src="https://i.ibb.co/8gLtmZkx/image.png" class="w-full h-full object-contain p-4 transition-transform duration-500 hover:scale-105">
-                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                                <span class="bg-tadc/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">Digital Circus</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="flex items-center gap-3">
-                                    <a href="https://discord.com/users/866480501959426079" target="_blank" class="flex-shrink-0"><img src="https://i.ibb.co/2Yqt6jD1/4724da3717d8ce63e1a4d2107f1e79c4.png" alt="Caine" class="w-10 h-10 rounded-full border border-slate-100"></a>
-                                    <div>
-                                        <a href="https://www.mediafire.com/file/uoj8civyjwtfatu/Kinger.cpmproject/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2"><h2 class="text-xl font-bold text-slate-900 leading-tight">Kinger Model</h2></a>
-                                        <a href="https://discord.com/users/866480501959426079" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors" title="Discord">By Caine</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">The anxious chess piece from The Amazing Digital Circus.</p>
-                            <div class="mt-auto flex gap-3 pt-4 border-t border-slate-50">
-                                <a href="https://www.mediafire.com/file/uoj8civyjwtfatu/Kinger.cpmproject/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
-                                <a href="https://discord.com/users/866480501959426079" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors" title="Discord"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- CAINE MODEL -->
-                    <article id="caine-model" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                        <div class="relative aspect-video bg-fuchsia-50 overflow-hidden group/media">
-                            <img src="https://i.ibb.co/Rpszcsts/image.png" class="w-full h-full object-contain p-4 transition-transform duration-500 hover:scale-105">
-                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                                <span class="bg-tadc/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">Digital Circus</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="flex items-center gap-3">
-                                    <a href="https://discord.com/users/866480501959426079" target="_blank" class="flex-shrink-0"><img src="https://i.ibb.co/2Yqt6jD1/4724da3717d8ce63e1a4d2107f1e79c4.png" alt="Caine" class="w-10 h-10 rounded-full border border-slate-100"></a>
-                                    <div>
-                                        <a href="https://www.mediafire.com/file/j3p8gnqkvm4tn6f/Caine.cpmproject/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2"><h2 class="text-xl font-bold text-slate-900 leading-tight">Caine Model</h2></a>
-                                        <a href="https://discord.com/users/866480501959426079" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors" title="Discord">By Caine</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">The ringmaster AI from The Amazing Digital Circus.</p>
-                            <div class="mt-auto flex gap-3 pt-4 border-t border-slate-50">
-                                <a href="https://www.mediafire.com/file/j3p8gnqkvm4tn6f/Caine.cpmproject/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
-                                <a href="https://discord.com/users/866480501959426079" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors" title="Discord"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
-            </section>
-
-            <!-- ANIME SERIES SECTION (NEW) -->
-            <section id="anime-series" class="scroll-mt-24">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="h-10 w-2 rounded-full bg-anime"></div>
-                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Anime Series</h2>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                    
-                    <!-- FRIEREN MODEL -->
-                    <article id="frieren-model" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                        <div id="frieren-media-container" class="relative aspect-video bg-purple-50 overflow-hidden group/media">
-                            <img id="frieren-video" src="https://i.ibb.co/fzRM61sH/image.png" class="w-full h-full object-contain p-4 transition-transform duration-500 hover:scale-105">
-                            <div id="frieren-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
-                                <img id="frieren-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
-                                <button onclick="resetPreview('frieren')" class="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-colors"><i data-lucide="x" class="w-4 h-4"></i></button>
-                            </div>
-                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                                <span class="bg-anime/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">Anime</span>
-                            </div>
-                        </div>
-
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="flex items-center gap-3">
-                                    <a href="https://discord.com/users/1188872755811201087" target="_blank" class="flex-shrink-0"><img src="https://i.ibb.co/Wv0BgfVZ/6b6d1775b6cca14c0f947499ae8d9b52.png" alt="cereal0x5587418" class="w-10 h-10 rounded-full border border-slate-100"></a>
-                                    <div>
-                                        <a href="https://www.mediafire.com/file/hleplx3bssznf70/Frieren_beta_1.1.cpmproject/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2"><h2 class="text-xl font-bold text-slate-900 leading-tight">Frieren Model</h2></a>
-                                        <a href="https://discord.com/users/1188872755811201087" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors" title="Discord">By cereal0x5587418</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">Hello everyone!<3 I wanted to make a skin about frieren. This is my first project, so please don't judge me too harshly.</p>
-                            
-                            <div class="mt-auto mb-6">
-                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Previews</div>
-                                <div class="flex flex-wrap gap-2">
-                                    <button onclick="showPreview('frieren', 'https://i.ibb.co/fzRM61sH/image.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-anime transition-colors"><img src="https://i.ibb.co/fzRM61sH/image.png" class="w-full h-full object-contain" title="Preview"></button>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-3 pt-4 border-t border-slate-50">
-                                <a href="https://www.mediafire.com/file/hleplx3bssznf70/Frieren_beta_1.1.cpmproject/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
-                                <a href="https://discord.com/users/1188872755811201087" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors" title="Discord"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
-            </section>
-
-            <!-- WILDLIFE SERIES SECTION (NEW) -->
-            <section id="wildlife-series" class="scroll-mt-24">
-                <div class="flex items-center gap-4 mb-8">
-                    <div class="h-10 w-2 rounded-full bg-emerald-500"></div>
-                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Wildlife Series</h2>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                    
-                    <!-- SHRIMP MODEL -->
-                    <article id="shrimp-model" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                        <div class="relative aspect-video bg-emerald-50 overflow-hidden group/media">
-                            <img src="https://i.ibb.co/whvbrZYW/image.png" class="w-full h-full object-contain p-4 transition-transform duration-500 hover:scale-105">
-                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                                <span class="bg-wildlife/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">Wildlife</span>
-                            </div>
-                        </div>
-                        <div class="p-6 flex-1 flex flex-col">
-                            <div class="flex justify-between items-start mb-3">
-                                <div class="flex items-center gap-3">
-                                    <a href="https://discord.com/users/564227330462056469" target="_blank" class="flex-shrink-0"><img src="https://i.ibb.co/SwGtj6Cf/7898197c05f35cd0e203eec548987087.png" alt="NRM" class="w-10 h-10 rounded-full border border-slate-100"></a>
-                                    <div>
-                                        <a href="https://www.mediafire.com/file/4j8cgcghxrlaxch/Shrimp.cpmmodel/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2"><h2 class="text-xl font-bold text-slate-900 leading-tight">Shrimp Model</h2></a>
-                                        <a href="https://discord.com/users/564227330462056469" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors" title="Discord">By NRM (Com Closed)</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">A detailed shrimp model for your underwater adventures.</p>
-                            <div class="mt-auto flex gap-3 pt-4 border-t border-slate-50">
-                                <a href="https://www.mediafire.com/file/4j8cgcghxrlaxch/Shrimp.cpmmodel/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
-                                <a href="https://discord.com/users/564227330462056469" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors" title="Discord"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
-            </section>
-
+        <!-- Dynamic Content Area -->
+        <div id="content-container" class="px-6 lg:px-12 pb-20 max-w-[1920px] mx-auto space-y-20">
+            <!-- Sections populated via JS -->
         </div>
 
         <footer class="border-t border-slate-200 bg-white py-12 px-8">
@@ -759,8 +176,412 @@
         </div>
     </div>
 
+    <!-- Data & Application Logic -->
     <script>
-        lucide.createIcons();
+        // === Data Source ===
+        const cpmData = [
+            {
+                id: "mario-series",
+                title: "Super Mario Series",
+                colorClass: "bg-mario",
+                packs: [
+                    {
+                        id: "mario-pack",
+                        title: "Alphs' Mario Pack",
+                        author: { name: "Alphs", avatar: "https://i.ibb.co/206k1PJr/4b836f5f-4428-461b-9fb6-426b5caebf19-e1491a0a-1b0f-479c-89dc-1e19b6560516.png", url: "https://ko-fi.com/alphs20" },
+                        description: "10 fully animated characters including Mario, Luigi, and Bowser. Features custom gestures and Pehkui hitboxes.",
+                        tag: "10 Skins",
+                        color: "mario",
+                        media: { type: "video", src: "https://www.youtube.com/embed/fy2re9YKYQM" },
+                        download: "https://www.mediafire.com/file/3sihup8u3jwthw0/MarioSkinPack.zip/file",
+                        kofi: "https://ko-fi.com/Post/SUPER-MARIO-Minecraft-CPM-Skin-Pack-FREE-DOWNLO-F1F5WL0H5",
+                        galleryType: "images",
+                        gallery: [
+                            { src: "https://i.ibb.co/jvMPJD2r/b2826359-e95e-4e30-9141-1cabb7782c92-mariostar.png", title: "Mario" },
+                            { src: "https://i.ibb.co/LdXQTHrn/872bc07a-3114-4708-b4e9-786ae53050ba-poltergust.png", title: "Luigi" },
+                            { src: "https://i.ibb.co/fGLzFWPr/1d2ded39-8f28-4825-925c-1cba0ece4126-peachtaunt.png", title: "Peach" },
+                            { src: "https://i.ibb.co/hx3NWs5z/f7d375b4-ecb4-4250-835c-e7cee54f5db0-toswaterfall.png", title: "Toad" },
+                            { src: "https://i.ibb.co/mry2xbzv/1c80ab1e-6931-4bdd-a174-0fa50f06edbe-yoshitongue.png", title: "Yoshi" },
+                            { src: "https://i.ibb.co/ds0MdcZr/756accad-1e80-478c-9188-a56b7dcb78a8-koopafreerunning.png", title: "Koopa" },
+                            { src: "https://i.ibb.co/Wp095k7t/b420cc76-8736-4a55-8809-8e78b07bf5b7-bowserlaugh.png", title: "Bowser" }
+                        ]
+                    },
+                    {
+                        id: "weegee-pack",
+                        title: "Weegee CPM Skin",
+                        author: { name: "Alphs", avatar: "https://i.ibb.co/206k1PJr/4b836f5f-4428-461b-9fb6-426b5caebf19-e1491a0a-1b0f-479c-89dc-1e19b6560516.png", url: "https://ko-fi.com/alphs20" },
+                        description: "Obey... WEEGEE. Includes Weegee and Weegee (Fair Play). Fully animated and ready to haunt your Minecraft world.",
+                        tag: "2 Skins",
+                        color: "weegee",
+                        media: { type: "image", src: "https://i.ibb.co/zHL2byQb/5b8f8b54-4968-4661-ae13-eb59e3e05ade-weegeeeyes.png" },
+                        download: "https://www.mediafire.com/file/qn0uifhvdgxjjdk/weegeeCPMskin.zip/file",
+                        kofi: "https://ko-fi.com/alphs20",
+                        galleryType: "images",
+                        gallery: [
+                             { src: "https://i.ibb.co/zHL2byQb/5b8f8b54-4968-4661-ae13-eb59e3e05ade-weegeeeyes.png", title: "Weegee Stare" },
+                             { src: "https://i.ibb.co/fzMpQysf/6e3b5e83-81d7-4a07-b656-927b3dbc9232-weegeebig.png", title: "Weegee Big" },
+                             { src: "https://i.ibb.co/jkTQ8zJ2/09f3a4fb-731c-45ca-a4a7-6b154d497a38-mamaluigi.png", title: "Mama Luigi" },
+                             { src: "https://i.ibb.co/LXMvT1g2/68e25600-3e00-46b5-ae1d-79530883cf30-lazar.png", title: "Lazar" }
+                        ]
+                    },
+                    {
+                        id: "alexx-mario",
+                        title: "Mario Model",
+                        author: { name: "AquariusAlexx", avatar: "https://i.ibb.co/G4VSrWHX/e8994aeae5090ea30a0fb60d999587d5.png", url: "https://discord.com/users/680910843608563776" },
+                        description: "Super Mario! A 1:1 Recreation of the Mario Mash-Up Pack Mario.",
+                        tag: "Standalone",
+                        color: "mario",
+                        media: { type: "image", src: "https://i.ibb.co/1f58R9W0/image.png" },
+                        download: "https://www.mediafire.com/file/ecn37yt0pk6qj5q/Mario.cpmmodel/file",
+                        discord: "https://discord.com/users/680910843608563776",
+                        galleryType: "none"
+                    }
+                ]
+            },
+            {
+                id: "sonic-series",
+                title: "Sonic the Hedgehog Series",
+                colorClass: "bg-sonic",
+                packs: [
+                    {
+                        id: "sonic-pack",
+                        title: "Alphs' Sonic Pack",
+                        author: { name: "Alphs", avatar: "https://i.ibb.co/206k1PJr/4b836f5f-4428-461b-9fb6-426b5caebf19-e1491a0a-1b0f-479c-89dc-1e19b6560516.png", url: "https://ko-fi.com/alphs20" },
+                        description: "Featuring 6 unique skins including Sonic, Tails, Knuckles, Amy, and Metal Sonic. Includes custom speed animations.",
+                        tag: "6 Skins",
+                        color: "sonic",
+                        media: { type: "video", src: "https://www.youtube.com/embed/qph8ML9eSHs" },
+                        download: "https://www.mediafire.com/file/p1um20mocpbtm1t/AlphsSonictheHedgehogSkinPackv1.2.zip/file",
+                        kofi: "https://ko-fi.com/Post/Alphs-SONIC-THE-HEDGEHOG-Skin-Pack-S6S21GVCYR",
+                        galleryType: "images",
+                        gallery: [
+                             { src: "https://i.ibb.co/1GJFTMyW/77b87853-5d2b-48f5-bd47-8ba55f3733cd-sc-sonic-1.png", title: "Sonic" },
+                             { src: "https://i.ibb.co/7t0XYg9F/566d72ce-ff9c-48a1-bf50-55f9cd37f258-knux.png", title: "Knuckles" },
+                             { src: "https://i.ibb.co/bjqGFq3D/98e97312-3d67-4996-b086-c7a2e74716d6-sc-sonic-4.png", title: "Tails" },
+                             { src: "https://i.ibb.co/VYv9zPBc/4c837355-a68d-47e3-8e2c-57c093bf09a8-sc-sonic-3.png", title: "Pose" },
+                             { src: "https://i.ibb.co/Y7wNB6hB/941003e4-5046-4c08-85d4-066d06a8980b-sc-sonic-5.png", title: "Metal Sonic" }
+                        ]
+                    },
+                    {
+                        id: "zareth-sonic",
+                        title: "Sonic Unleashed",
+                        author: { name: "ZarethTheWyvern", avatar: "https://i.ibb.co/Q72krBt6/807cf5e2fdd26e72cdf3bfbb747f69d9.png", url: "https://discord.com/users/1064293294038859920" },
+                        description: "Sonic unleashed! Finally a sonic model in a while. (Export is not high effort and project is meant for building off of).",
+                        tag: "Standalone",
+                        color: "sonic",
+                        media: { type: "image", src: "https://i.ibb.co/Nd6xCwMc/image.png" },
+                        download: "https://www.mediafire.com/file/dhc1d18nii101mv/SonicOM_Figura+-+Converted.cpmproject/file",
+                        discord: "https://discord.com/users/1064293294038859920",
+                        galleryType: "none"
+                    }
+                ]
+            },
+            {
+                id: "pokemon-series",
+                title: "Pokémon Series",
+                colorClass: "bg-pokemon",
+                packs: [
+                    {
+                        id: "noivern-model",
+                        title: "Noivern Model",
+                        author: { name: "SerHan-Solo", avatar: "https://i.ibb.co/xtQw3s9L/86bf55fa-c69c-4342-aba5-264a25bb3a03-1c4fc6c8-d781-4be3-97d0-7298d1feb504.png", url: "https://ko-fi.com/serhansolo" },
+                        description: "Soar through the night as the fierce Noivern! Model belongs to the Cobblemon Team, re-animated by SerHan.",
+                        tag: "Flying Type",
+                        color: "noivern",
+                        media: { type: "image", src: "https://i.ibb.co/tPPb6VLW/image.png" },
+                        download: "https://www.mediafire.com/file/pd9xzjeezmi3d9k/Noivern.cpmmodel/file",
+                        kofi: "https://ko-fi.com/serhansolo",
+                        galleryType: "images",
+                        gallery: [
+                             { src: "https://i.ibb.co/tPPb6VLW/image.png", title: "Idle" },
+                             { src: "https://i.ibb.co/5XkGqn6q/fdfc0122-d073-483b-a983-b4a63ddcf773-minecraft-1-21-112-12-20255-57-47pm.png", title: "Flying" }
+                        ]
+                    },
+                     {
+                        id: "braixen-model",
+                        title: "Braixen Model",
+                        author: { name: "SerHan-Solo", avatar: "https://i.ibb.co/xtQw3s9L/86bf55fa-c69c-4342-aba5-264a25bb3a03-1c4fc6c8-d781-4be3-97d0-7298d1feb504.png", url: "https://ko-fi.com/serhansolo" },
+                        description: "Brew your own Adventure with Braixen! Model belongs to the Cobblemon Team, re-animated by SerHan.",
+                        tag: "Fire Type",
+                        color: "braixen",
+                        media: { type: "image", src: "https://i.ibb.co/FTVNHr4/6e677b8b-c62e-4a34-af73-94a2620b703e-editbraixennew-sketchfab-googlechrome10-12-202510-05-17pm.png" },
+                        download: "https://www.mediafire.com/file/zs92v18299y5rvr/Braixen.cpmmodel/file",
+                        kofi: "https://ko-fi.com/serhansolo",
+                        galleryType: "images",
+                        gallery: [
+                             { src: "https://i.ibb.co/FTVNHr4/6e677b8b-c62e-4a34-af73-94a2620b703e-editbraixennew-sketchfab-googlechrome10-12-202510-05-17pm.png", title: "Idle" },
+                             { src: "https://i.ibb.co/27RjfH1b/b8444156-6754-4452-8b36-d14d6f35472b-editbraixenmodel-sketchfab-googlechrome10-12-20259-26-23pm.png", title: "Pose 1" },
+                             { src: "https://i.ibb.co/YFCDshYD/6ee8d852-a904-46af-b548-8b85176a4aac-editbraixen-sketchfab-googlechrome10-12-202512-55-01am.png", title: "Pose 2" },
+                             { src: "https://i.ibb.co/C5B5YzM5/10e3df86-7718-46b1-9b6b-eb868d1423c2-25gbezgif-7cc072db897288b7.gif", title: "Spin" }
+                        ]
+                    },
+                    {
+                        id: "cubone-model",
+                        title: "Cubone Model",
+                        author: { name: "SerHan-Solo", avatar: "https://i.ibb.co/xtQw3s9L/86bf55fa-c69c-4342-aba5-264a25bb3a03-1c4fc6c8-d781-4be3-97d0-7298d1feb504.png", url: "https://ko-fi.com/serhansolo" },
+                        description: "Explore the large world as the Lonely Cubone. Model created by the Cobblemon Team, re-animated by SerHan.",
+                        tag: "Ground Type",
+                        color: "cubone",
+                        media: { type: "image", src: "https://i.ibb.co/YT3BCHYT/03a40a02-bc6e-4a4c-a3b5-3705c31ede68-cubone-3dmodelbyser21serhankol19772266287-sketchfab-googlechrom.png" },
+                        download: "https://www.mediafire.com/file/m3y4126aojbv3vt/Cubone.cpmmodel/file",
+                        kofi: "https://ko-fi.com/serhansolo",
+                        galleryType: "images",
+                        gallery: [
+                             { src: "https://i.ibb.co/YT3BCHYT/03a40a02-bc6e-4a4c-a3b5-3705c31ede68-cubone-3dmodelbyser21serhankol19772266287-sketchfab-googlechrom.png", title: "Idle" },
+                             { src: "https://i.ibb.co/YFtL4GXd/c360c0a1-2ae6-4988-8ead-a2af0337be1a-minecraft-forge1-20-1-singleplayer11-12-20255-54-17pm.png", title: "In Game" }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "fnaf-series",
+                title: "Five Nights at Freddy's Series",
+                colorClass: "bg-fnaf",
+                packs: [
+                    {
+                        id: "fnaf-pack",
+                        title: "Five Nights at Freddy's 1",
+                        author: { name: "InkyLilly", avatar: "https://i.ibb.co/40BtWPq/3faa7f76-558d-4a6d-ab6a-68a2d332ea25-4f7ef870-646f-43af-b0ec-17e803853232.png", url: "https://ko-fi.com/inkyinkylillylilly/" },
+                        description: "A small Minecraft Player Model pack of the FNaF 1 animatronics + Crying Child.",
+                        tag: "6 Skins",
+                        color: "fnaf",
+                        media: { type: "image", src: "https://i.ibb.co/KxfX6H0h/d4cbab8b-bd67-486e-afcb-5e5f8abe0960-fnafingrender1.png" },
+                        download: "https://www.mediafire.com/file/xx5h47oxmqbv6e7/FNaF+1+Pack.zip/file",
+                        kofi: "https://ko-fi.com/inkyinkylillylilly/",
+                        galleryType: "tags",
+                        gallery: ["Freddy", "Bonnie", "Chica", "Foxy", "Golden Freddy", "Crying Child"]
+                    }
+                ]
+            },
+            {
+                id: "tadc-series",
+                title: "The Amazing Digital Circus Series",
+                colorClass: "bg-tadc",
+                packs: [
+                    {
+                        id: "jax-model",
+                        title: "Jax Model",
+                        author: { name: "Caine", avatar: "https://i.ibb.co/2Yqt6jD1/4724da3717d8ce63e1a4d2107f1e79c4.png", url: "https://discord.com/users/866480501959426079" },
+                        description: "The mischievous rabbit from The Amazing Digital Circus.",
+                        tag: "Standalone",
+                        color: "tadc",
+                        media: { type: "image", src: "https://i.ibb.co/ksh4SBGy/image.png" },
+                        download: "https://www.mediafire.com/file/rtcou46m45p1icg/Jax.cpmproject/file",
+                        discord: "https://discord.com/users/866480501959426079",
+                        galleryType: "none"
+                    },
+                    {
+                        id: "kinger-model",
+                        title: "Kinger Model",
+                        author: { name: "Caine", avatar: "https://i.ibb.co/2Yqt6jD1/4724da3717d8ce63e1a4d2107f1e79c4.png", url: "https://discord.com/users/866480501959426079" },
+                        description: "The anxious chess piece from The Amazing Digital Circus.",
+                        tag: "Standalone",
+                        color: "tadc",
+                        media: { type: "image", src: "https://i.ibb.co/8gLtmZkx/image.png" },
+                        download: "https://www.mediafire.com/file/uoj8civyjwtfatu/Kinger.cpmproject/file",
+                        discord: "https://discord.com/users/866480501959426079",
+                        galleryType: "none"
+                    },
+                    {
+                        id: "caine-model",
+                        title: "Caine Model",
+                        author: { name: "Caine", avatar: "https://i.ibb.co/2Yqt6jD1/4724da3717d8ce63e1a4d2107f1e79c4.png", url: "https://discord.com/users/866480501959426079" },
+                        description: "The ringmaster AI from The Amazing Digital Circus.",
+                        tag: "Standalone",
+                        color: "tadc",
+                        media: { type: "image", src: "https://i.ibb.co/Rpszcsts/image.png" },
+                        download: "https://www.mediafire.com/file/j3p8gnqkvm4tn6f/Caine.cpmproject/file",
+                        discord: "https://discord.com/users/866480501959426079",
+                        galleryType: "none"
+                    }
+                ]
+            },
+            {
+                id: "anime-series",
+                title: "Anime Series",
+                colorClass: "bg-anime",
+                packs: [
+                     {
+                        id: "frieren-model",
+                        title: "Frieren Model",
+                        author: { name: "cereal0x5587418", avatar: "https://i.ibb.co/Wv0BgfVZ/6b6d1775b6cca14c0f947499ae8d9b52.png", url: "https://discord.com/users/1188872755811201087" },
+                        description: "Hello everyone!<3 I wanted to make a skin about frieren. This is my first project, so please don't judge me too harshly.",
+                        tag: "Standalone",
+                        color: "anime",
+                        media: { type: "image", src: "https://i.ibb.co/fzRM61sH/image.png" },
+                        download: "https://www.mediafire.com/file/hleplx3bssznf70/Frieren_beta_1.1.cpmproject/file",
+                        discord: "https://discord.com/users/1188872755811201087",
+                        galleryType: "images",
+                        gallery: [ { src: "https://i.ibb.co/fzRM61sH/image.png", title: "Preview" } ]
+                    }
+                ]
+            },
+             {
+                id: "wildlife-series",
+                title: "Wildlife Series",
+                colorClass: "bg-emerald-500",
+                packs: [
+                    {
+                        id: "shrimp-model",
+                        title: "Shrimp Model",
+                        author: { name: "NRM", avatar: "https://i.ibb.co/SwGtj6Cf/7898197c05f35cd0e203eec548987087.png", url: "https://discord.com/users/564227330462056469" },
+                        description: "A detailed shrimp model for your underwater adventures.",
+                        tag: "Standalone",
+                        color: "wildlife",
+                        media: { type: "image", src: "https://i.ibb.co/whvbrZYW/image.png" },
+                        download: "https://www.mediafire.com/file/4j8cgcghxrlaxch/Shrimp.cpmmodel/file",
+                        discord: "https://discord.com/users/564227330462056469",
+                        galleryType: "none"
+                    }
+                ]
+            }
+        ];
+
+        // === Render Logic ===
+
+        function renderNavigation() {
+            const desktopNav = document.getElementById('desktop-nav-links');
+            const mobileNav = document.getElementById('mobile-nav-links');
+            const linksHtml = cpmData.map(series => `
+                <a href="#${series.id}" class="block px-4 py-2 text-slate-500 font-semibold hover:text-brand-600 transition-colors">${series.title.replace(' Series', '')}</a>
+            `).join('');
+
+            // Mobile nav has extra 'Home' link
+            mobileNav.innerHTML = `
+                <a href="#hero" class="block px-4 py-2 text-slate-600 font-semibold hover:bg-slate-50 rounded-lg">Home</a>
+                ${cpmData.map(series => `
+                     <a href="#${series.id}" class="block px-4 py-2 text-slate-600 font-medium hover:bg-slate-50 rounded-lg">${series.title}</a>
+                `).join('')}
+            `;
+            
+            // Desktop
+            desktopNav.innerHTML = linksHtml;
+        }
+
+        function renderContent() {
+            const container = document.getElementById('content-container');
+            let contentHtml = '';
+
+            cpmData.forEach(series => {
+                contentHtml += `
+                <section id="${series.id}" class="scroll-mt-24">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="h-10 w-2 rounded-full ${series.colorClass}"></div>
+                        <h2 class="text-3xl font-bold text-slate-900 tracking-tight">${series.title}</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                `;
+
+                series.packs.forEach(pack => {
+                    contentHtml += createPackCard(pack);
+                });
+
+                contentHtml += `
+                    </div>
+                </section>
+                `;
+            });
+
+            container.innerHTML = contentHtml;
+            // Update stats
+            document.getElementById('stat-collections').innerText = cpmData.length;
+        }
+
+        function createPackCard(pack) {
+            // Media Area
+            let mediaHtml = '';
+            if (pack.media.type === 'video') {
+                mediaHtml = `
+                <iframe id="${pack.id}-video" class="w-full h-full absolute inset-0 transition-opacity duration-300" src="${pack.media.src}?autoplay=1&mute=1&loop=1&playlist=${pack.media.src.split('/').pop()}&controls=0" title="Showcase" frameborder="0" allowfullscreen></iframe>
+                `;
+            } else {
+                mediaHtml = `
+                <img id="${pack.id}-video" src="${pack.media.src}" class="w-full h-full object-contain p-4 transition-opacity duration-300" alt="Preview">
+                `;
+            }
+
+            // Carousel/Gallery
+            let galleryHtml = '';
+            if (pack.galleryType === 'images') {
+                galleryHtml = `
+                <div class="mt-auto mb-6">
+                    <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Previews</div>
+                    <div class="flex flex-wrap gap-2">
+                        ${pack.gallery.map(img => `
+                            <button onclick="showPreview('${pack.id}', '${img.src}')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-${pack.color} transition-colors">
+                                <img src="${img.src}" class="w-full h-full object-contain" title="${img.title}">
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+                `;
+            } else if (pack.galleryType === 'tags') {
+                galleryHtml = `
+                <div class="mt-auto mb-6">
+                    <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Included Characters</div>
+                    <div class="flex flex-wrap gap-1.5">
+                        ${pack.gallery.map(tag => `
+                            <span class="px-2 py-1 bg-slate-50 border border-slate-200 rounded text-[10px] font-semibold text-slate-500">${tag}</span>
+                        `).join('')}
+                    </div>
+                </div>
+                `;
+            } else {
+                // Empty spacer to push buttons down
+                 galleryHtml = `<div class="mt-auto"></div>`;
+            }
+
+            // Buttons
+            let buttonsHtml = `
+                <a href="${pack.download}" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
+            `;
+            if (pack.kofi) {
+                buttonsHtml += `<a href="${pack.kofi}" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors"><i data-lucide="coffee" class="w-4 h-4"></i></a>`;
+            }
+            if (pack.discord) {
+                buttonsHtml += `<a href="${pack.discord}" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors" title="Discord"><i data-lucide="message-circle" class="w-4 h-4"></i></a>`;
+            }
+
+            return `
+                <article id="${pack.id}" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
+                    <div id="${pack.id}-media-container" class="relative aspect-video ${pack.media.type === 'image' ? 'bg-slate-100' : 'bg-slate-900'} overflow-hidden group/media">
+                        ${mediaHtml}
+                        <div id="${pack.id}-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
+                            <img id="${pack.id}-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
+                            <button onclick="resetPreview('${pack.id}')" class="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-colors"><i data-lucide="x" class="w-4 h-4"></i></button>
+                        </div>
+                        <div class="absolute top-4 left-4 z-0 pointer-events-none">
+                            <span class="bg-${pack.color}/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">${pack.tag || 'Pack'}</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center gap-3">
+                                <a href="${pack.author.url}" target="_blank" class="flex-shrink-0">
+                                    <img src="${pack.author.avatar}" alt="${pack.author.name}" class="w-10 h-10 rounded-full border border-slate-100">
+                                </a>
+                                <div>
+                                    <a href="${pack.download}" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2">
+                                        <h2 class="text-xl font-bold text-slate-900 leading-tight">${pack.title}</h2>
+                                    </a>
+                                    <a href="${pack.author.url}" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors">By ${pack.author.name}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-6 line-clamp-3">${pack.description}</p>
+                        
+                        ${galleryHtml}
+
+                        <div class="flex gap-3 pt-4 border-t border-slate-50">
+                            ${buttonsHtml}
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        // === Interactions ===
 
         function showPreview(packId, imageUrl) {
             const video = document.getElementById(`${packId}-video`);
@@ -779,29 +600,7 @@
             setTimeout(() => { if (overlay) overlay.classList.add('invisible'); }, 300);
         }
 
-        const menuBtn = document.getElementById('menu-btn');
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebar-overlay');
-        const closeBtn = document.getElementById('close-sidebar');
-
-        function toggleMenu() {
-            const isClosed = sidebar.classList.contains('-translate-x-full');
-            if (isClosed) {
-                sidebar.classList.remove('-translate-x-full');
-                overlay.classList.remove('hidden');
-                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
-            } else {
-                sidebar.classList.add('-translate-x-full');
-                overlay.classList.add('opacity-0');
-                setTimeout(() => overlay.classList.add('hidden'), 300);
-            }
-        }
-
-        menuBtn.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', toggleMenu);
-        overlay.addEventListener('click', toggleMenu);
-
-        // Privacy Modal Logic
+        // Privacy Modal
         function togglePrivacyModal() {
             const modal = document.getElementById('privacy-modal');
             if (modal.classList.contains('hidden')) {
@@ -811,56 +610,36 @@
             }
         }
 
-        // Init scrolls (include 'frieren')
+        // Initialize
         window.addEventListener('load', () => {
-            ['mario', 'weegee', 'sonic', 'noivern', 'braixen', 'cubone', 'frieren'].forEach(id => {
-                 // Check scroll logic if we used carousel structure.
-                 // Current Frieren impl doesn't use carousel structure with scroll buttons,
-                 // but checking it won't break anything as element ID won't match or be null.
-                 if(typeof checkScroll === 'function') checkScroll(id);
-            });
+            renderContent();
+            renderNavigation();
+            lucide.createIcons();
+            
+            // Re-bind menu events after DOM gen if needed, or just keep them global
+             const menuBtn = document.getElementById('menu-btn');
+             const closeBtn = document.getElementById('close-sidebar');
+             const overlay = document.getElementById('sidebar-overlay');
+             const sidebar = document.getElementById('sidebar');
+
+             function toggleMenu() {
+                const isClosed = sidebar.classList.contains('-translate-x-full');
+                if (isClosed) {
+                    sidebar.classList.remove('-translate-x-full');
+                    overlay.classList.remove('hidden');
+                    setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+                } else {
+                    sidebar.classList.add('-translate-x-full');
+                    overlay.classList.add('opacity-0');
+                    setTimeout(() => overlay.classList.add('hidden'), 300);
+                }
+            }
+
+            menuBtn.addEventListener('click', toggleMenu);
+            closeBtn.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', toggleMenu);
         });
-        window.addEventListener('resize', () => {
-             ['mario', 'weegee', 'sonic', 'noivern', 'braixen', 'cubone', 'frieren'].forEach(id => {
-                 if(typeof checkScroll === 'function') checkScroll(id);
-            });
-        });
 
-        // Manual Carousel Logic
-        function scrollCarousel(packId, direction) {
-            const container = document.getElementById(`${packId}-carousel`);
-            const scrollAmount = 240; 
-            if(container) container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-        }
-
-        function checkScroll(packId) {
-            const container = document.getElementById(`${packId}-carousel`);
-            const leftBtn = document.getElementById(`${packId}-nav-left`);
-            const rightBtn = document.getElementById(`${packId}-nav-right`);
-
-            if (!container || !leftBtn || !rightBtn) return;
-
-            // Check if scrollable
-            if (container.scrollWidth <= container.clientWidth) {
-                leftBtn.classList.add('hidden');
-                rightBtn.classList.add('hidden');
-                return;
-            }
-
-            // Left Button
-            if (container.scrollLeft <= 5) {
-                leftBtn.classList.add('hidden');
-            } else {
-                leftBtn.classList.remove('hidden');
-            }
-
-            // Right Button
-            if (Math.ceil(container.scrollLeft + container.clientWidth) >= container.scrollWidth - 5) {
-                rightBtn.classList.add('hidden');
-            } else {
-                rightBtn.classList.remove('hidden');
-            }
-        }
     </script>
 </body>
 </html>
