@@ -38,6 +38,7 @@
                         pokemon: '#eab308',
                         tadc: '#c026d3',
                         wildlife: '#10b981',
+                        anime: '#a855f7', // Purple for Anime
                     },
                     boxShadow: {
                         'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
@@ -96,6 +97,7 @@
             <a href="#fnaf-series" class="hover:text-fnaf transition-colors">FNaF</a>
             <a href="#pokemon-series" class="hover:text-noivern transition-colors">Pokémon</a>
             <a href="#tadc-series" class="hover:text-tadc transition-colors">Digital Circus</a>
+            <a href="#anime-series" class="hover:text-anime transition-colors">Anime</a>
             <a href="#wildlife-series" class="hover:text-wildlife transition-colors">Wildlife</a>
         </div>
     </nav>
@@ -115,6 +117,7 @@
                 <a href="#fnaf-series" class="block px-4 py-2 text-slate-600 font-medium hover:bg-slate-50 rounded-lg">FNaF Series</a>
                 <a href="#pokemon-series" class="block px-4 py-2 text-slate-600 font-medium hover:bg-slate-50 rounded-lg">Pokémon Series</a>
                 <a href="#tadc-series" class="block px-4 py-2 text-slate-600 font-medium hover:bg-slate-50 rounded-lg">Digital Circus</a>
+                <a href="#anime-series" class="block px-4 py-2 text-slate-600 font-medium hover:bg-slate-50 rounded-lg">Anime Series</a>
                 <a href="#wildlife-series" class="block px-4 py-2 text-slate-600 font-medium hover:bg-slate-50 rounded-lg">Wildlife Series</a>
             </nav>
         </div>
@@ -133,7 +136,7 @@
                     High-quality, community-sourced CPM rigs. Animated, free, and ready to use.
                 </p>
                 <div class="flex flex-wrap gap-8 justify-center lg:justify-start text-sm font-semibold text-slate-400 uppercase tracking-wide">
-                    <div><span class="text-2xl font-bold text-slate-900 block normal-case">10</span> Collections</div>
+                    <div><span class="text-2xl font-bold text-slate-900 block normal-case">11</span> Collections</div>
                     <div class="w-px h-10 bg-slate-200 hidden sm:block"></div>
                     <div><span class="text-2xl font-bold text-slate-900 block normal-case">35k+</span> Downloads</div>
                     <div class="w-px h-10 bg-slate-200 hidden sm:block"></div>
@@ -633,6 +636,57 @@
                 </div>
             </section>
 
+            <!-- ANIME SERIES SECTION (NEW) -->
+            <section id="anime-series" class="scroll-mt-24">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="h-10 w-2 rounded-full bg-anime"></div>
+                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Anime Series</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                    
+                    <!-- FRIEREN MODEL -->
+                    <article id="frieren-model" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
+                        <div id="frieren-media-container" class="relative aspect-video bg-purple-50 overflow-hidden group/media">
+                            <img id="frieren-video" src="https://i.ibb.co/fzRM61sH/image.png" class="w-full h-full object-contain p-4 transition-transform duration-500 hover:scale-105">
+                            <div id="frieren-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
+                                <img id="frieren-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
+                                <button onclick="resetPreview('frieren')" class="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-colors"><i data-lucide="x" class="w-4 h-4"></i></button>
+                            </div>
+                            <div class="absolute top-4 left-4 z-0 pointer-events-none">
+                                <span class="bg-anime/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">Anime</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="flex items-center gap-3">
+                                    <a href="https://discord.com/users/1188872755811201087" target="_blank" class="flex-shrink-0"><img src="https://i.ibb.co/Wv0BgfVZ/6b6d1775b6cca14c0f947499ae8d9b52.png" alt="cereal0x5587418" class="w-10 h-10 rounded-full border border-slate-100"></a>
+                                    <div>
+                                        <a href="https://www.mediafire.com/file/hleplx3bssznf70/Frieren_beta_1.1.cpmproject/file" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2"><h2 class="text-xl font-bold text-slate-900 leading-tight">Frieren Model</h2></a>
+                                        <a href="https://discord.com/users/1188872755811201087" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors" title="Discord">By cereal0x5587418</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-slate-600 text-sm mb-6 line-clamp-3">Hello everyone!<3 I wanted to make a skin about frieren. This is my first project, so please don't judge me too harshly.</p>
+                            
+                            <div class="mt-auto mb-6">
+                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Previews</div>
+                                <div class="flex flex-wrap gap-2">
+                                    <button onclick="showPreview('frieren', 'https://i.ibb.co/fzRM61sH/image.png')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-anime transition-colors"><img src="https://i.ibb.co/fzRM61sH/image.png" class="w-full h-full object-contain" title="Preview"></button>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3 pt-4 border-t border-slate-50">
+                                <a href="https://www.mediafire.com/file/hleplx3bssznf70/Frieren_beta_1.1.cpmproject/file" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
+                                <a href="https://discord.com/users/1188872755811201087" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors" title="Discord"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
             <!-- WILDLIFE SERIES SECTION (NEW) -->
             <section id="wildlife-series" class="scroll-mt-24">
                 <div class="flex items-center gap-4 mb-8">
@@ -754,6 +808,57 @@
                 modal.classList.remove('hidden');
             } else {
                 modal.classList.add('hidden');
+            }
+        }
+
+        // Init scrolls (include 'frieren')
+        window.addEventListener('load', () => {
+            ['mario', 'weegee', 'sonic', 'noivern', 'braixen', 'cubone', 'frieren'].forEach(id => {
+                 // Check scroll logic if we used carousel structure.
+                 // Current Frieren impl doesn't use carousel structure with scroll buttons,
+                 // but checking it won't break anything as element ID won't match or be null.
+                 if(typeof checkScroll === 'function') checkScroll(id);
+            });
+        });
+        window.addEventListener('resize', () => {
+             ['mario', 'weegee', 'sonic', 'noivern', 'braixen', 'cubone', 'frieren'].forEach(id => {
+                 if(typeof checkScroll === 'function') checkScroll(id);
+            });
+        });
+
+        // Manual Carousel Logic
+        function scrollCarousel(packId, direction) {
+            const container = document.getElementById(`${packId}-carousel`);
+            const scrollAmount = 240; 
+            if(container) container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+
+        function checkScroll(packId) {
+            const container = document.getElementById(`${packId}-carousel`);
+            const leftBtn = document.getElementById(`${packId}-nav-left`);
+            const rightBtn = document.getElementById(`${packId}-nav-right`);
+
+            if (!container || !leftBtn || !rightBtn) return;
+
+            // Check if scrollable
+            if (container.scrollWidth <= container.clientWidth) {
+                leftBtn.classList.add('hidden');
+                rightBtn.classList.add('hidden');
+                return;
+            }
+
+            // Left Button
+            if (container.scrollLeft <= 5) {
+                leftBtn.classList.add('hidden');
+            } else {
+                leftBtn.classList.remove('hidden');
+            }
+
+            // Right Button
+            if (Math.ceil(container.scrollLeft + container.clientWidth) >= container.scrollWidth - 5) {
+                rightBtn.classList.add('hidden');
+            } else {
+                rightBtn.classList.remove('hidden');
             }
         }
     </script>
