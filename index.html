@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CPM Nexus - Custom Player Models</title>
-    <!-- Google Fonts: Plus Jakarta Sans -->
+    <!-- Google Fonts: Fredoka for headings (playful), Plus Jakarta Sans for body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -18,6 +18,7 @@
             theme: {
                 extend: {
                     fontFamily: {
+                        heading: ['"Fredoka"', 'sans-serif'],
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
                     },
                     colors: {
@@ -33,17 +34,20 @@
                         weegee: '#16a34a',
                         sonic: '#0284c7',
                         fnaf: '#d97706',
-                        pokemon: '#eab308', // Yellow for Pokemon Banner
+                        pokemon: '#eab308', 
                         noivern: '#7c3aed',
                         braixen: '#ea580c',
                         cubone: '#78716c',
                         tadc: '#c026d3',
                         anime: '#a855f7',
                         wildlife: '#10b981',
+                        starfox: '#38bdf8', 
+                        fortnite: '#d946ef',
                     },
                     boxShadow: {
-                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-                        'hover': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.01)',
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
                     }
                 }
             }
@@ -51,25 +55,37 @@
     </script>
     <style>
         body {
-            background-color: #f8fafc;
-            color: #334155;
+            background-color: #f4f4f5; /* Zinc-100, warmer than slate */
+            color: #3f3f46; /* Zinc-700 */
         }
+        
+        /* Fun transitions */
+        .bounce-hover {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .bounce-hover:hover {
+            transform: scale(1.02);
+        }
+
         .transition-all-300 {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
         ::-webkit-scrollbar-track {
             background: transparent; 
         }
         ::-webkit-scrollbar-thumb {
-            background: #cbd5e1; 
-            border-radius: 4px;
+            background: #d4d4d8; 
+            border-radius: 9999px;
+            border: 3px solid #f4f4f5;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; 
+            background: #a1a1aa; 
         }
+        
         .fade-mask-x {
             mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
@@ -81,76 +97,99 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        
+        /* Rating Badge Styles - Rounded & Playful */
+        .rating-box {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            padding: 4px 8px;
+            font-size: 10px;
+            line-height: 1;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .pegi-3 { background-color: #a5c400; color: white; }
+        .pegi-7 { background-color: #f6a900; color: white; }
+        .pegi-12 { background-color: #f37d00; color: white; }
+        .pegi-16 { background-color: #e2001a; color: white; }
+        .esrb { background-color: white; color: black; border: 2px solid #e4e4e7; }
     </style>
 </head>
-<body class="flex flex-col min-h-screen bg-slate-50 selection:bg-brand-500 selection:text-white">
+<body class="flex flex-col min-h-screen bg-zinc-50 selection:bg-brand-500 selection:text-white" id="main-body">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-slate-200 z-40 flex justify-between items-center px-6 py-3 transition-all duration-300">
+    <nav class="fixed top-0 w-full bg-white/70 backdrop-blur-lg border-b border-white/50 z-40 flex justify-between items-center px-6 py-4 transition-all duration-300">
         <div class="flex items-center gap-4">
-            <button id="menu-btn" class="p-2 text-slate-500 hover:bg-slate-100 hover:text-brand-600 rounded-lg transition-colors lg:hidden focus:outline-none focus:ring-2 focus:ring-brand-500/20">
+            <button id="menu-btn" class="p-2.5 text-zinc-500 hover:bg-zinc-100 hover:text-brand-600 rounded-xl transition-colors lg:hidden">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
-            <div class="flex items-center gap-2 select-none cursor-pointer" onclick="window.scrollTo(0,0)">
-                <div class="bg-brand-600 text-white p-1.5 rounded-lg shadow-sm">
+            <div class="flex items-center gap-2.5 select-none cursor-pointer group" onclick="window.scrollTo(0,0)">
+                <div class="bg-brand-600 text-white p-2 rounded-xl shadow-md group-hover:scale-110 transition-transform">
                     <i data-lucide="box" class="w-5 h-5"></i>
                 </div>
-                <span class="font-bold text-xl text-slate-900 tracking-tight">CPM Nexus</span>
+                <span class="font-heading font-bold text-xl text-zinc-800 tracking-tight group-hover:text-brand-600 transition-colors">CPM Nexus</span>
             </div>
         </div>
-        <div id="desktop-nav-links" class="hidden xl:flex items-center gap-6 text-sm font-semibold text-slate-500">
+        <div id="desktop-nav-links" class="hidden xl:flex items-center gap-2 text-sm font-bold text-zinc-500">
             <!-- Populated via JS -->
         </div>
     </nav>
 
     <!-- Sidebar Overlay & Drawer -->
-    <div id="sidebar-overlay" class="fixed inset-0 bg-slate-900/20 z-50 hidden backdrop-blur-sm transition-opacity opacity-0"></div>
-    <aside id="sidebar" class="fixed inset-y-0 left-0 z-[60] w-72 bg-white border-r border-slate-200 transform -translate-x-full transition-transform duration-300 shadow-2xl flex flex-col lg:hidden">
+    <div id="sidebar-overlay" class="fixed inset-0 bg-zinc-900/20 z-50 hidden backdrop-blur-sm transition-opacity opacity-0"></div>
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-[60] w-80 bg-white border-r border-zinc-100 transform -translate-x-full transition-transform duration-300 shadow-2xl flex flex-col lg:hidden rounded-r-3xl">
         <div class="p-6">
             <div class="flex items-center justify-between mb-8">
-                <h1 class="font-bold text-xl text-slate-900">Menu</h1>
-                <button id="close-sidebar" class="text-slate-400 hover:text-slate-600 bg-slate-50 p-2 rounded-lg"><i data-lucide="x" class="w-5 h-5"></i></button>
+                <h1 class="font-heading font-bold text-2xl text-zinc-800">Menu</h1>
+                <button id="close-sidebar" class="text-zinc-400 hover:text-zinc-600 bg-zinc-50 p-2.5 rounded-xl transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
-            <nav id="mobile-nav-links" class="space-y-1">
+            <nav id="mobile-nav-links" class="space-y-2">
                 <!-- Populated via JS -->
             </nav>
         </div>
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 min-w-0 pt-20">
+    <main class="flex-1 min-w-0 pt-24">
         
         <!-- Hero Section -->
-        <header id="hero" class="px-6 py-12 lg:py-16 max-w-7xl mx-auto text-center lg:text-left">
+        <header id="hero" class="px-6 py-12 lg:py-20 max-w-7xl mx-auto text-center lg:text-left relative">
+            <!-- decorative bg elements -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-100 rounded-full blur-3xl opacity-50 -z-10 pointer-events-none"></div>
+            
             <div class="max-w-4xl mx-auto lg:mx-0">
-                <h1 class="text-4xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight">
-                    Premium <span class="text-brand-600">Custom Models</span><br> for Minecraft Java.
-                </h1>
-                <p class="text-lg text-slate-500 mb-8 max-w-2xl mx-auto lg:mx-0">
-                    High-quality, community-sourced CPM rigs. Animated, free, and ready to use.
-                </p>
-                <div class="flex flex-wrap gap-8 justify-center lg:justify-start text-sm font-semibold text-slate-400 uppercase tracking-wide">
-                    <div><span class="text-2xl font-bold text-slate-900 block normal-case" id="stat-collections">0</span> Collections</div>
-                    <div class="w-px h-10 bg-slate-200 hidden sm:block"></div>
-                    <div><span class="text-2xl font-bold text-slate-900 block normal-case">35k+</span> Downloads</div>
-                    <div class="w-px h-10 bg-slate-200 hidden sm:block"></div>
-                    <div><span class="text-2xl font-bold text-slate-900 block normal-case">100%</span> Free</div>
+                <div class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-brand-50 text-brand-600 text-xs font-bold mb-6 border border-brand-100 shadow-sm">
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+                    </span>
+                    Community Library
                 </div>
+                <h1 class="font-heading text-5xl lg:text-7xl font-bold text-zinc-900 mb-6 tracking-tight leading-[1.1]">
+                    Awesome <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-purple-600">Custom Models</span><br> for Minecraft.
+                </h1>
+                <p class="text-lg text-zinc-500 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-medium">
+                    The friendliest place to find high-quality CPM rigs. Fully animated, totally free, and ready for your next adventure.
+                </p>
             </div>
         </header>
 
         <!-- Dynamic Content Area -->
-        <div id="content-container" class="px-6 lg:px-12 pb-20 max-w-[1920px] mx-auto space-y-20">
+        <div id="content-container" class="px-6 lg:px-12 pb-24 max-w-[1920px] mx-auto space-y-24">
             <!-- Sections populated via JS -->
         </div>
 
-        <footer class="border-t border-slate-200 bg-white py-12 px-8">
+        <footer class="border-t border-zinc-200 bg-white py-12 px-8">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-                <p class="text-sm text-slate-500">
-                    &copy; 2025 CPM Nexus. <span class="text-slate-400">Not affiliated with Mojang Studios.</span>
+                <p class="text-sm text-zinc-400 font-medium">
+                    &copy; 2025 CPM Nexus. <span class="text-zinc-300">Fan-made repository.</span>
                 </p>
                 <div class="flex gap-6">
-                    <button onclick="togglePrivacyModal()" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors">Privacy & Disclaimer</button>
+                    <button onclick="togglePrivacyModal()" class="text-sm font-bold text-zinc-500 hover:text-brand-600 transition-colors">Privacy & Terms</button>
                 </div>
             </div>
         </footer>
@@ -159,18 +198,21 @@
 
     <!-- Privacy Modal -->
     <div id="privacy-modal" class="fixed inset-0 z-[100] hidden">
-        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="togglePrivacyModal()"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg p-4">
-            <div class="bg-white rounded-2xl shadow-2xl p-8 relative">
-                <button onclick="togglePrivacyModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
-                <h3 class="text-2xl font-bold text-slate-900 mb-4">Privacy & Disclaimer</h3>
-                <div class="prose prose-slate text-slate-600 text-sm leading-relaxed">
-                    <p class="mb-4">These models were made available for free by the creators. Models are usually based on trademarked IPs, so these are not official models and are just based on them.</p>
-                    <p class="mb-4">Nobody has given permission to put these models on the site but they are open source and credit is given along with Ko-fi links.</p>
-                    <p>This site is a fan-made repository and claims no ownership over the models or the intellectual property they represent.</p>
+        <div class="absolute inset-0 bg-zinc-900/40 backdrop-blur-sm transition-opacity" onclick="togglePrivacyModal()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg p-6">
+            <div class="bg-white rounded-3xl shadow-2xl p-8 relative ring-4 ring-white/50">
+                <button onclick="togglePrivacyModal()" class="absolute top-6 right-6 text-zinc-400 hover:text-zinc-600 bg-zinc-50 p-2 rounded-full transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+                <div class="mb-4 text-brand-600 bg-brand-50 w-12 h-12 rounded-xl flex items-center justify-center">
+                    <i data-lucide="info" class="w-6 h-6"></i>
                 </div>
-                <div class="mt-6 flex justify-end">
-                    <button onclick="togglePrivacyModal()" class="bg-slate-900 text-white font-semibold py-2 px-6 rounded-lg hover:bg-brand-600 transition-colors">Close</button>
+                <h3 class="font-heading text-2xl font-bold text-zinc-900 mb-4">Good to Know</h3>
+                <div class="prose prose-zinc text-zinc-600 text-sm leading-relaxed space-y-4">
+                    <p><strong>Free & Fan-Made:</strong> All models here are created by awesome community members and are free to use. We don't sell anything!</p>
+                    <p><strong>Copyright Stuff:</strong> These models are based on characters (like Mario or Sonic) owned by big companies. We don't own those characters, and this site isn't official.</p>
+                    <p><strong>Credit:</strong> We always link back to the original creators. If you like a model, consider supporting them on Ko-fi!</p>
+                </div>
+                <div class="mt-8 flex justify-end">
+                    <button onclick="togglePrivacyModal()" class="bg-zinc-900 hover:bg-zinc-800 text-white font-bold py-3 px-8 rounded-xl transition-all hover:scale-105 active:scale-95">Got it!</button>
                 </div>
             </div>
         </div>
@@ -192,6 +234,7 @@
                         description: "10 fully animated characters including Mario, Luigi, and Bowser. Features custom gestures and Pehkui hitboxes.",
                         tag: "10 Skins",
                         color: "mario",
+                        ratings: { pegi: "3", esrb: "E", minAge: 3 },
                         media: { type: "video", src: "https://www.youtube.com/embed/fy2re9YKYQM" },
                         download: "https://www.mediafire.com/file/3sihup8u3jwthw0/MarioSkinPack.zip/file",
                         kofi: "https://ko-fi.com/Post/SUPER-MARIO-Minecraft-CPM-Skin-Pack-FREE-DOWNLO-F1F5WL0H5",
@@ -213,6 +256,7 @@
                         description: "Obey... WEEGEE. Includes Weegee and Weegee (Fair Play). Fully animated and ready to haunt your Minecraft world.",
                         tag: "2 Skins",
                         color: "weegee",
+                        ratings: { pegi: "7", esrb: "E10+", minAge: 7 },
                         media: { type: "image", src: "https://i.ibb.co/zHL2byQb/5b8f8b54-4968-4661-ae13-eb59e3e05ade-weegeeeyes.png" },
                         download: "https://www.mediafire.com/file/qn0uifhvdgxjjdk/weegeeCPMskin.zip/file",
                         kofi: "https://ko-fi.com/alphs20",
@@ -231,6 +275,7 @@
                         description: "Super Mario! A 1:1 Recreation of the Mario Mash-Up Pack Mario.",
                         tag: "Standalone",
                         color: "mario",
+                        ratings: { pegi: "3", esrb: "E", minAge: 3 },
                         media: { type: "image", src: "https://i.ibb.co/1f58R9W0/image.png" },
                         download: "https://www.mediafire.com/file/ecn37yt0pk6qj5q/Mario.cpmmodel/file",
                         discord: "https://discord.com/users/680910843608563776",
@@ -250,6 +295,7 @@
                         description: "Featuring 6 unique skins including Sonic, Tails, Knuckles, Amy, and Metal Sonic. Includes custom speed animations.",
                         tag: "6 Skins",
                         color: "sonic",
+                        ratings: { pegi: "3", esrb: "E", minAge: 3 },
                         media: { type: "video", src: "https://www.youtube.com/embed/qph8ML9eSHs" },
                         download: "https://www.mediafire.com/file/p1um20mocpbtm1t/AlphsSonictheHedgehogSkinPackv1.2.zip/file",
                         kofi: "https://ko-fi.com/Post/Alphs-SONIC-THE-HEDGEHOG-Skin-Pack-S6S21GVCYR",
@@ -269,10 +315,36 @@
                         description: "Sonic unleashed! Finally a sonic model in a while. (Export is not high effort and project is meant for building off of).",
                         tag: "Standalone",
                         color: "sonic",
+                        ratings: { pegi: "7", esrb: "E10+", minAge: 7 },
                         media: { type: "image", src: "https://i.ibb.co/Nd6xCwMc/image.png" },
                         download: "https://www.mediafire.com/file/dhc1d18nii101mv/SonicOM_Figura+-+Converted.cpmproject/file",
                         discord: "https://discord.com/users/1064293294038859920",
                         galleryType: "none"
+                    }
+                ]
+            },
+            {
+                id: "starfox-series",
+                title: "Star Fox Series",
+                colorClass: "bg-starfox",
+                packs: [
+                    {
+                        id: "krystal-model",
+                        title: "Krystal Model",
+                        author: { name: "EvaFolf 2.0", avatar: "https://i.ibb.co/CpJspJY4/image.png", url: "https://discord.com/users/339396806981189635" },
+                        description: "Has almost all custom animations, including aiming for bows, crossbows and tridents, two outfits, and a head plush model!",
+                        tag: "Standalone",
+                        color: "starfox",
+                        ratings: { pegi: "16", esrb: "T", minAge: 16 }, 
+                        media: { type: "image", src: "https://i.ibb.co/LDNdnf88/image.png" },
+                        download: "https://www.mediafire.com/file/vslct25akr3bmnf/KrystalV1.00.cpmmodel/file",
+                        discord: "https://discord.com/users/339396806981189635",
+                        galleryType: "images",
+                        gallery: [
+                             { src: "https://i.ibb.co/LDNdnf88/image.png", title: "Main" },
+                             { src: "https://i.ibb.co/ks2wzQ3K/image.png", title: "Pose 1" },
+                             { src: "https://i.ibb.co/CKjssz3n/image.png", title: "Pose 2" }
+                        ]
                     }
                 ]
             },
@@ -288,6 +360,7 @@
                         description: "Soar through the night as the fierce Noivern! Model belongs to the Cobblemon Team, re-animated by SerHan.",
                         tag: "Flying Type",
                         color: "noivern",
+                        ratings: { pegi: "7", esrb: "E10+", minAge: 7 },
                         media: { type: "image", src: "https://i.ibb.co/tPPb6VLW/image.png" },
                         download: "https://www.mediafire.com/file/pd9xzjeezmi3d9k/Noivern.cpmmodel/file",
                         kofi: "https://ko-fi.com/serhansolo",
@@ -304,6 +377,7 @@
                         description: "Brew your own Adventure with Braixen! Model belongs to the Cobblemon Team, re-animated by SerHan.",
                         tag: "Fire Type",
                         color: "braixen",
+                        ratings: { pegi: "12", esrb: "T", minAge: 12 },
                         media: { type: "image", src: "https://i.ibb.co/FTVNHr4/6e677b8b-c62e-4a34-af73-94a2620b703e-editbraixennew-sketchfab-googlechrome10-12-202510-05-17pm.png" },
                         download: "https://www.mediafire.com/file/zs92v18299y5rvr/Braixen.cpmmodel/file",
                         kofi: "https://ko-fi.com/serhansolo",
@@ -322,6 +396,7 @@
                         description: "Explore the large world as the Lonely Cubone. Model created by the Cobblemon Team, re-animated by SerHan.",
                         tag: "Ground Type",
                         color: "cubone",
+                        ratings: { pegi: "3", esrb: "E", minAge: 3 },
                         media: { type: "image", src: "https://i.ibb.co/YT3BCHYT/03a40a02-bc6e-4a4c-a3b5-3705c31ede68-cubone-3dmodelbyser21serhankol19772266287-sketchfab-googlechrom.png" },
                         download: "https://www.mediafire.com/file/m3y4126aojbv3vt/Cubone.cpmmodel/file",
                         kofi: "https://ko-fi.com/serhansolo",
@@ -345,6 +420,7 @@
                         description: "A small Minecraft Player Model pack of the FNaF 1 animatronics + Crying Child.",
                         tag: "6 Skins",
                         color: "fnaf",
+                        ratings: { pegi: "12", esrb: "T", minAge: 12 },
                         media: { type: "image", src: "https://i.ibb.co/KxfX6H0h/d4cbab8b-bd67-486e-afcb-5e5f8abe0960-fnafingrender1.png" },
                         download: "https://www.mediafire.com/file/xx5h47oxmqbv6e7/FNaF+1+Pack.zip/file",
                         kofi: "https://ko-fi.com/inkyinkylillylilly/",
@@ -365,6 +441,7 @@
                         description: "The mischievous rabbit from The Amazing Digital Circus.",
                         tag: "Standalone",
                         color: "tadc",
+                        ratings: { pegi: "7", esrb: "E10+", minAge: 7 },
                         media: { type: "image", src: "https://i.ibb.co/ksh4SBGy/image.png" },
                         download: "https://www.mediafire.com/file/rtcou46m45p1icg/Jax.cpmproject/file",
                         discord: "https://discord.com/users/866480501959426079",
@@ -377,6 +454,7 @@
                         description: "The anxious chess piece from The Amazing Digital Circus.",
                         tag: "Standalone",
                         color: "tadc",
+                        ratings: { pegi: "7", esrb: "E10+", minAge: 7 },
                         media: { type: "image", src: "https://i.ibb.co/8gLtmZkx/image.png" },
                         download: "https://www.mediafire.com/file/uoj8civyjwtfatu/Kinger.cpmproject/file",
                         discord: "https://discord.com/users/866480501959426079",
@@ -389,6 +467,7 @@
                         description: "The ringmaster AI from The Amazing Digital Circus.",
                         tag: "Standalone",
                         color: "tadc",
+                        ratings: { pegi: "7", esrb: "E10+", minAge: 7 },
                         media: { type: "image", src: "https://i.ibb.co/Rpszcsts/image.png" },
                         download: "https://www.mediafire.com/file/j3p8gnqkvm4tn6f/Caine.cpmproject/file",
                         discord: "https://discord.com/users/866480501959426079",
@@ -408,11 +487,36 @@
                         description: "Hello everyone!<3 I wanted to make a skin about frieren. This is my first project, so please don't judge me too harshly.",
                         tag: "Standalone",
                         color: "anime",
+                        ratings: { pegi: "7", esrb: "E10+", minAge: 7 }, // Frieren updated to PEGI 7
                         media: { type: "image", src: "https://i.ibb.co/fzRM61sH/image.png" },
                         download: "https://www.mediafire.com/file/hleplx3bssznf70/Frieren_beta_1.1.cpmproject/file",
                         discord: "https://discord.com/users/1188872755811201087",
                         galleryType: "images",
                         gallery: [ { src: "https://i.ibb.co/fzRM61sH/image.png", title: "Preview" } ]
+                    }
+                ]
+            },
+            {
+                id: "fortnite-series",
+                title: "Fortnite Series",
+                colorClass: "bg-fortnite",
+                packs: [
+                    {
+                        id: "spicecat-model",
+                        title: "Spicecat Model",
+                        author: { name: "gab", avatar: "https://i.ibb.co/DHw3F4Xq/2dac33e070cef3ad171b4a934e5d05eb-size-128.jpg", url: "https://discord.com/users/642907903602458688" },
+                        description: "spoOOoOoky- well, not so much, actually",
+                        tag: "Standalone",
+                        color: "fortnite",
+                        ratings: { pegi: "12", esrb: "T", minAge: 12 },
+                        media: { type: "image", src: "https://i.ibb.co/gN5jxFX/image.png" },
+                        download: "https://www.mediafire.com/file/pnfjdsjlkf6zeck/spicecat.cpmproject/file",
+                        discord: "https://discord.com/users/642907903602458688",
+                        galleryType: "images",
+                        gallery: [
+                             { src: "https://i.ibb.co/gN5jxFX/image.png", title: "Main" },
+                             { src: "https://i.ibb.co/BV09BD4D/image.png", title: "Preview" }
+                        ]
                     }
                 ]
             },
@@ -428,6 +532,7 @@
                         description: "A detailed shrimp model for your underwater adventures.",
                         tag: "Standalone",
                         color: "wildlife",
+                        ratings: { pegi: "3", esrb: "E", minAge: 3 },
                         media: { type: "image", src: "https://i.ibb.co/whvbrZYW/image.png" },
                         download: "https://www.mediafire.com/file/4j8cgcghxrlaxch/Shrimp.cpmmodel/file",
                         discord: "https://discord.com/users/564227330462056469",
@@ -443,14 +548,14 @@
             const desktopNav = document.getElementById('desktop-nav-links');
             const mobileNav = document.getElementById('mobile-nav-links');
             const linksHtml = cpmData.map(series => `
-                <a href="#${series.id}" class="block px-4 py-2 text-slate-500 font-semibold hover:text-brand-600 transition-colors">${series.title.replace(' Series', '')}</a>
+                <a href="#${series.id}" class="block px-3 py-1.5 text-zinc-500 font-bold hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-all text-sm">${series.title.replace(' Series', '')}</a>
             `).join('');
 
             // Mobile nav has extra 'Home' link
             mobileNav.innerHTML = `
-                <a href="#hero" class="block px-4 py-2 text-slate-600 font-semibold hover:bg-slate-50 rounded-lg">Home</a>
+                <a href="#hero" class="block px-4 py-3 text-zinc-600 font-heading font-bold hover:bg-zinc-50 rounded-xl transition-colors">Home</a>
                 ${cpmData.map(series => `
-                     <a href="#${series.id}" class="block px-4 py-2 text-slate-600 font-medium hover:bg-slate-50 rounded-lg">${series.title}</a>
+                     <a href="#${series.id}" class="block px-4 py-3 text-zinc-600 font-heading font-bold hover:bg-zinc-50 rounded-xl transition-colors">${series.title}</a>
                 `).join('')}
             `;
             
@@ -465,9 +570,9 @@
             cpmData.forEach(series => {
                 contentHtml += `
                 <section id="${series.id}" class="scroll-mt-24">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="h-10 w-2 rounded-full ${series.colorClass}"></div>
-                        <h2 class="text-3xl font-bold text-slate-900 tracking-tight">${series.title}</h2>
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="h-8 w-8 rounded-xl ${series.colorClass} shadow-md"></div>
+                        <h2 class="text-3xl font-heading font-bold text-zinc-900 tracking-tight">${series.title}</h2>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                 `;
@@ -483,20 +588,20 @@
             });
 
             container.innerHTML = contentHtml;
-            // Update stats
-            document.getElementById('stat-collections').innerText = cpmData.length;
         }
 
         function createPackCard(pack) {
+            // No restriction logic anymore
+            
             // Media Area
             let mediaHtml = '';
             if (pack.media.type === 'video') {
                 mediaHtml = `
-                <iframe id="${pack.id}-video" class="w-full h-full absolute inset-0 transition-opacity duration-300" src="${pack.media.src}?autoplay=1&mute=1&loop=1&playlist=${pack.media.src.split('/').pop()}&controls=0" title="Showcase" frameborder="0" allowfullscreen></iframe>
+                <iframe id="${pack.id}-video" class="w-full h-full absolute inset-0 transition-opacity duration-500" src="${pack.media.src}?autoplay=1&mute=1&loop=1&playlist=${pack.media.src.split('/').pop()}&controls=0" title="Showcase" frameborder="0" allowfullscreen></iframe>
                 `;
             } else {
                 mediaHtml = `
-                <img id="${pack.id}-video" src="${pack.media.src}" class="w-full h-full object-contain p-4 transition-opacity duration-300" alt="Preview">
+                <img id="${pack.id}-video" src="${pack.media.src}" class="w-full h-full object-contain p-6 transition-all duration-500 group-hover:scale-105" alt="Preview">
                 `;
             }
 
@@ -505,11 +610,11 @@
             if (pack.galleryType === 'images') {
                 galleryHtml = `
                 <div class="mt-auto mb-6">
-                    <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Previews</div>
+                    <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2 pl-1">Previews</div>
                     <div class="flex flex-wrap gap-2">
                         ${pack.gallery.map(img => `
-                            <button onclick="showPreview('${pack.id}', '${img.src}')" class="h-10 w-10 bg-slate-50 rounded-lg border border-slate-200 p-0.5 hover:border-${pack.color} transition-colors">
-                                <img src="${img.src}" class="w-full h-full object-contain" title="${img.title}">
+                            <button onclick="showPreview('${pack.id}', '${img.src}')" class="h-10 w-10 bg-zinc-50 rounded-lg border-2 border-transparent p-0.5 hover:border-${pack.color} transition-all hover:scale-110 active:scale-95 shadow-sm">
+                                <img src="${img.src}" class="w-full h-full object-contain rounded-md" title="${img.title}">
                             </button>
                         `).join('')}
                     </div>
@@ -518,62 +623,100 @@
             } else if (pack.galleryType === 'tags') {
                 galleryHtml = `
                 <div class="mt-auto mb-6">
-                    <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Included Characters</div>
+                    <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2 pl-1">Included</div>
                     <div class="flex flex-wrap gap-1.5">
                         ${pack.gallery.map(tag => `
-                            <span class="px-2 py-1 bg-slate-50 border border-slate-200 rounded text-[10px] font-semibold text-slate-500">${tag}</span>
+                            <span class="px-2.5 py-1 bg-zinc-50 border border-zinc-200 rounded-lg text-[10px] font-bold text-zinc-500 shadow-sm">${tag}</span>
                         `).join('')}
                     </div>
                 </div>
                 `;
             } else {
-                // Empty spacer to push buttons down
                  galleryHtml = `<div class="mt-auto"></div>`;
             }
 
             // Buttons
             let buttonsHtml = `
-                <a href="${pack.download}" target="_blank" class="flex-1 bg-slate-900 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 text-sm"><i data-lucide="download" class="w-4 h-4"></i> Download</a>
+                <a href="${pack.download}" target="_blank" class="flex-1 font-bold py-3 rounded-xl transition-all active:scale-95 flex items-center justify-center gap-2 text-sm hover:bg-brand-600 bg-zinc-900 text-white shadow-lg hover:shadow-brand-500/20">
+                    <i data-lucide="download" class="w-4 h-4"></i> Download
+                </a>
             `;
             if (pack.kofi) {
-                buttonsHtml += `<a href="${pack.kofi}" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors"><i data-lucide="coffee" class="w-4 h-4"></i></a>`;
+                buttonsHtml += `<a href="${pack.kofi}" target="_blank" class="p-3 border-2 border-zinc-100 rounded-xl hover:bg-brand-50 hover:border-brand-200 text-zinc-400 hover:text-brand-600 transition-all active:scale-95"><i data-lucide="coffee" class="w-5 h-5"></i></a>`;
             }
             if (pack.discord) {
-                buttonsHtml += `<a href="${pack.discord}" target="_blank" class="p-2.5 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500 transition-colors" title="Discord"><i data-lucide="message-circle" class="w-4 h-4"></i></a>`;
+                buttonsHtml += `<a href="${pack.discord}" target="_blank" class="p-3 border-2 border-zinc-100 rounded-xl hover:bg-brand-50 hover:border-brand-200 text-zinc-400 hover:text-brand-600 transition-all active:scale-95" title="Discord"><i data-lucide="message-circle" class="w-5 h-5"></i></a>`;
+            }
+            
+            // Ratings Badge HTML
+            let ratingsHtml = '';
+            if (pack.ratings) {
+                // Determine Region Preference
+                const userLocale = navigator.language || navigator.userLanguage; 
+                const isUS = userLocale.startsWith('en-US');
+
+                if (isUS) {
+                     ratingsHtml = `
+                        <div class="absolute top-4 right-4 z-10 flex gap-1.5 pointer-events-none drop-shadow-md">
+                            <span class="rating-box esrb">ESRB ${pack.ratings.esrb}</span>
+                        </div>
+                    `;
+                } else {
+                    const pegiColor = pack.ratings.pegi === "3" ? "pegi-3" : 
+                                      pack.ratings.pegi === "7" ? "pegi-7" : 
+                                      pack.ratings.pegi === "12" ? "pegi-12" : "pegi-16";
+                    ratingsHtml = `
+                        <div class="absolute top-4 right-4 z-10 flex gap-1.5 pointer-events-none drop-shadow-md">
+                            <span class="rating-box ${pegiColor}">PEGI ${pack.ratings.pegi}</span>
+                        </div>
+                    `;
+                }
             }
 
+            // Overlay for preview mode
+            let overlayHtml = `
+                <div id="${pack.id}-image-overlay" class="absolute inset-0 bg-white/95 backdrop-blur-xl z-20 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-8">
+                    <img id="${pack.id}-preview-img" src="" class="w-full h-full object-contain drop-shadow-2xl" alt="Preview">
+                    <button onclick="resetPreview('${pack.id}')" class="absolute top-4 right-4 bg-zinc-100 hover:bg-zinc-200 text-zinc-500 p-2 rounded-full transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+                </div>
+            `;
+
             return `
-                <article id="${pack.id}" class="bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-hover transition-all-300 flex flex-col h-full">
-                    <div id="${pack.id}-media-container" class="relative aspect-video ${pack.media.type === 'image' ? 'bg-slate-100' : 'bg-slate-900'} overflow-hidden group/media">
+                <article id="${pack.id}" class="bg-white rounded-[2rem] shadow-card hover:shadow-hover border border-zinc-100 overflow-hidden transition-all duration-300 flex flex-col h-full group bounce-hover">
+                    <div id="${pack.id}-media-container" class="relative aspect-video ${pack.media.type === 'image' ? 'bg-zinc-50' : 'bg-black'} overflow-hidden rounded-t-[2rem]">
                         ${mediaHtml}
-                        <div id="${pack.id}-image-overlay" class="absolute inset-0 bg-slate-900 z-10 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
-                            <img id="${pack.id}-preview-img" src="" class="w-full h-full object-contain" alt="Preview">
-                            <button onclick="resetPreview('${pack.id}')" class="absolute top-4 right-4 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-colors"><i data-lucide="x" class="w-4 h-4"></i></button>
-                        </div>
+                        ${ratingsHtml}
+                        ${overlayHtml}
                         <div class="absolute top-4 left-4 z-0 pointer-events-none">
-                            <span class="bg-${pack.color}/90 backdrop-blur text-white px-2 py-1 rounded text-xs font-bold shadow-sm">${pack.tag || 'Pack'}</span>
+                            <span class="bg-${pack.color}/90 backdrop-blur-sm text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm ring-1 ring-white/20">${pack.tag || 'Pack'}</span>
                         </div>
                     </div>
 
                     <div class="p-6 flex-1 flex flex-col">
-                        <div class="flex justify-between items-start mb-3">
+                        <div class="flex justify-between items-start mb-4">
                             <div class="flex items-center gap-3">
-                                <a href="${pack.author.url}" target="_blank" class="flex-shrink-0">
-                                    <img src="${pack.author.avatar}" alt="${pack.author.name}" class="w-10 h-10 rounded-full border border-slate-100">
+                                <a href="${pack.author.url}" target="_blank" class="flex-shrink-0 group/avatar relative">
+                                    <img src="${pack.author.avatar}" alt="${pack.author.name}" class="w-12 h-12 rounded-2xl border-2 border-white shadow-sm object-cover">
+                                    <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-green-500 border-2 border-white"></div>
+                                    </div>
                                 </a>
                                 <div>
-                                    <a href="${pack.download}" target="_blank" class="hover:underline decoration-brand-600 underline-offset-2">
-                                        <h2 class="text-xl font-bold text-slate-900 leading-tight">${pack.title}</h2>
+                                    <a href="${pack.download}" target="_blank" class="hover:text-brand-600 transition-colors">
+                                        <h2 class="text-xl font-heading font-bold text-zinc-900 leading-tight">${pack.title}</h2>
                                     </a>
-                                    <a href="${pack.author.url}" target="_blank" class="text-xs text-slate-500 font-medium hover:text-brand-600 transition-colors">By ${pack.author.name}</a>
+                                    <a href="${pack.author.url}" target="_blank" class="text-xs text-zinc-400 font-bold hover:text-brand-600 transition-colors flex items-center gap-1">
+                                        ${pack.author.name} <i data-lucide="external-link" class="w-3 h-3"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <p class="text-slate-600 text-sm mb-6 line-clamp-3">${pack.description}</p>
+                        
+                        <p class="text-zinc-500 text-sm mb-6 line-clamp-3 font-medium leading-relaxed">${pack.description}</p>
                         
                         ${galleryHtml}
 
-                        <div class="flex gap-3 pt-4 border-t border-slate-50">
+                        <div class="flex gap-3 pt-6 border-t border-dashed border-zinc-200">
                             ${buttonsHtml}
                         </div>
                     </div>
@@ -588,7 +731,11 @@
             const overlay = document.getElementById(`${packId}-image-overlay`);
             const img = document.getElementById(`${packId}-preview-img`);
             if(img) img.src = imageUrl;
-            if (video) video.classList.add('opacity-0');
+            // if video is iframe
+            if (video && video.tagName === 'IFRAME') video.classList.add('opacity-0');
+            // if video is img
+            if (video && video.tagName === 'IMG') video.classList.add('opacity-0');
+            
             if (overlay) { overlay.classList.remove('invisible'); overlay.classList.remove('opacity-0'); }
         }
 
@@ -616,7 +763,7 @@
             renderNavigation();
             lucide.createIcons();
             
-            // Re-bind menu events after DOM gen if needed, or just keep them global
+            // Menu Logic
              const menuBtn = document.getElementById('menu-btn');
              const closeBtn = document.getElementById('close-sidebar');
              const overlay = document.getElementById('sidebar-overlay');
