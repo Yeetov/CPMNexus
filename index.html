@@ -43,6 +43,7 @@
                         wildlife: '#10b981',
                         starfox: '#38bdf8', 
                         fortnite: '#d946ef',
+                        miku: '#39c5bb', // Miku Teal
                     },
                     boxShadow: {
                         'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
@@ -220,9 +221,6 @@
 
     <!-- Data & Application Logic -->
     <script>
-        // === Global State ===
-        let userAge = 0;
-
         // === Data Source ===
         const cpmData = [
             {
@@ -237,7 +235,7 @@
                         description: "10 fully animated characters including Mario, Luigi, and Bowser. Features custom gestures and Pehkui hitboxes.",
                         tag: "10 Skins",
                         color: "mario",
-                        ratings: { pegi: "3", esrb: "E", minAge: 3 },
+                        ratings: { pegi: "3", esrb: "E" },
                         media: { type: "video", src: "https://www.youtube.com/embed/fy2re9YKYQM" },
                         download: "https://www.mediafire.com/file/3sihup8u3jwthw0/MarioSkinPack.zip/file",
                         kofi: "https://ko-fi.com/Post/SUPER-MARIO-Minecraft-CPM-Skin-Pack-FREE-DOWNLO-F1F5WL0H5",
@@ -259,7 +257,7 @@
                         description: "Obey... WEEGEE. Includes Weegee and Weegee (Fair Play). Fully animated and ready to haunt your Minecraft world.",
                         tag: "2 Skins",
                         color: "weegee",
-                        ratings: { pegi: "7", esrb: "E10+", minAge: 7 },
+                        ratings: { pegi: "7", esrb: "E10+" },
                         media: { type: "image", src: "https://i.ibb.co/zHL2byQb/5b8f8b54-4968-4661-ae13-eb59e3e05ade-weegeeeyes.png" },
                         download: "https://www.mediafire.com/file/qn0uifhvdgxjjdk/weegeeCPMskin.zip/file",
                         kofi: "https://ko-fi.com/alphs20",
@@ -278,7 +276,7 @@
                         description: "Super Mario! A 1:1 Recreation of the Mario Mash-Up Pack Mario.",
                         tag: "Standalone",
                         color: "mario",
-                        ratings: { pegi: "3", esrb: "E", minAge: 3 },
+                        ratings: { pegi: "3", esrb: "E" },
                         media: { type: "image", src: "https://i.ibb.co/1f58R9W0/image.png" },
                         download: "https://www.mediafire.com/file/ecn37yt0pk6qj5q/Mario.cpmmodel/file",
                         discord: "https://discord.com/users/680910843608563776",
@@ -298,7 +296,7 @@
                         description: "Featuring 6 unique skins including Sonic, Tails, Knuckles, Amy, and Metal Sonic. Includes custom speed animations.",
                         tag: "6 Skins",
                         color: "sonic",
-                        ratings: { pegi: "3", esrb: "E", minAge: 3 },
+                        ratings: { pegi: "3", esrb: "E" },
                         media: { type: "video", src: "https://www.youtube.com/embed/qph8ML9eSHs" },
                         download: "https://www.mediafire.com/file/p1um20mocpbtm1t/AlphsSonictheHedgehogSkinPackv1.2.zip/file",
                         kofi: "https://ko-fi.com/Post/Alphs-SONIC-THE-HEDGEHOG-Skin-Pack-S6S21GVCYR",
@@ -318,11 +316,40 @@
                         description: "Sonic unleashed! Finally a sonic model in a while. (Export is not high effort and project is meant for building off of).",
                         tag: "Standalone",
                         color: "sonic",
-                        ratings: { pegi: "3", esrb: "E", minAge: 3 },
+                        ratings: { pegi: "3", esrb: "E" },
                         media: { type: "image", src: "https://i.ibb.co/Nd6xCwMc/image.png" },
                         download: "https://www.mediafire.com/file/dhc1d18nii101mv/SonicOM_Figura+-+Converted.cpmproject/file",
                         discord: "https://discord.com/users/1064293294038859920",
                         galleryType: "none"
+                    }
+                ]
+            },
+            {
+                id: "vocaloid-series",
+                title: "Vocaloid Series",
+                colorClass: "bg-miku",
+                packs: [
+                    {
+                        id: "miku-model",
+                        title: "Alphs' Miku Skin",
+                        author: { name: "Alphs", avatar: "https://i.ibb.co/206k1PJr/4b836f5f-4428-461b-9fb6-426b5caebf19-e1491a0a-1b0f-479c-89dc-1e19b6560516.png", url: "https://ko-fi.com/alphs20" },
+                        description: "A standalone skin packed with many references to Hatsune Miku! Includes animated hair, faces, 24 gestures, 9 outfits, and more.",
+                        tag: "9 Outfits",
+                        color: "miku",
+                        ratings: { pegi: "3", esrb: "E" },
+                        media: { type: "video", src: "https://www.youtube.com/embed/ro4EqO5RXyI" },
+                        download: "https://www.mediafire.com/file/1lo07hvwl4em408/AlphsMikuSkin_v1.0.zip/file",
+                        kofi: "https://ko-fi.com/post/Alphs-MIKU-CPM-Skin-O4O81Q9U6R",
+                        galleryType: "images",
+                        gallery: [
+                            { src: "https://i.ibb.co/RGLMQR5P/c13afe23-6493-4704-a673-1835e47b3b86-2025-12-13-18-52-55.png", title: "Main" },
+                            { src: "https://i.ibb.co/zWz7vRbH/c292a2c0-7fbd-48e6-abd7-74b0859980e0-sc2.png", title: "Pose 1" },
+                            { src: "https://i.ibb.co/BVnFh5ZQ/e0785c72-36a8-4ad1-9a74-6d9d3106f866-sc3.png", title: "Pose 2" },
+                            { src: "https://i.ibb.co/4Z1GzrPV/1856fe84-c45f-4208-8f37-a60ddb1a4fae-sc4.png", title: "Pose 3" },
+                            { src: "https://i.ibb.co/Pz3d4bLC/082d211e-1de3-4527-a882-4b242012aaf1-mikuhair-omg.gif", title: "Hair Physics" },
+                            { src: "https://i.ibb.co/4ggfkMFH/872cd089-16f3-425d-a866-b9feabe47af0-dancemikudancesaythatagain-wtf.gif", title: "Dance" },
+                            { src: "https://i.ibb.co/dwtSvqYQ/4602be22-011c-4ade-8260-d4ac3c957b5a-mikufaceprev.gif", title: "Face Anim" }
+                        ]
                     }
                 ]
             },
@@ -338,7 +365,7 @@
                         description: "Has almost all custom animations, including aiming for bows, crossbows and tridents, two outfits, and a head plush model!",
                         tag: "Standalone",
                         color: "starfox",
-                        ratings: { pegi: "16", esrb: "T", minAge: 16 }, 
+                        ratings: { pegi: "16", esrb: "T" }, 
                         media: { type: "image", src: "https://i.ibb.co/LDNdnf88/image.png" },
                         download: "https://www.mediafire.com/file/vslct25akr3bmnf/KrystalV1.00.cpmmodel/file",
                         discord: "https://discord.com/users/339396806981189635",
@@ -363,7 +390,7 @@
                         description: "Soar through the night as the fierce Noivern! Model belongs to the Cobblemon Team, re-animated by SerHan.",
                         tag: "Flying Type",
                         color: "noivern",
-                        ratings: { pegi: "7", esrb: "E10+", minAge: 7 },
+                        ratings: { pegi: "7", esrb: "E10+" },
                         media: { type: "image", src: "https://i.ibb.co/tPPb6VLW/image.png" },
                         download: "https://www.mediafire.com/file/pd9xzjeezmi3d9k/Noivern.cpmmodel/file",
                         kofi: "https://ko-fi.com/serhansolo",
@@ -380,7 +407,7 @@
                         description: "Brew your own Adventure with Braixen! Model belongs to the Cobblemon Team, re-animated by SerHan.",
                         tag: "Fire Type",
                         color: "braixen",
-                        ratings: { pegi: "12", esrb: "T", minAge: 12 },
+                        ratings: { pegi: "12", esrb: "T" },
                         media: { type: "image", src: "https://i.ibb.co/FTVNHr4/6e677b8b-c62e-4a34-af73-94a2620b703e-editbraixennew-sketchfab-googlechrome10-12-202510-05-17pm.png" },
                         download: "https://www.mediafire.com/file/zs92v18299y5rvr/Braixen.cpmmodel/file",
                         kofi: "https://ko-fi.com/serhansolo",
@@ -399,7 +426,7 @@
                         description: "Explore the large world as the Lonely Cubone. Model created by the Cobblemon Team, re-animated by SerHan.",
                         tag: "Ground Type",
                         color: "cubone",
-                        ratings: { pegi: "3", esrb: "E", minAge: 3 },
+                        ratings: { pegi: "3", esrb: "E" },
                         media: { type: "image", src: "https://i.ibb.co/YT3BCHYT/03a40a02-bc6e-4a4c-a3b5-3705c31ede68-cubone-3dmodelbyser21serhankol19772266287-sketchfab-googlechrom.png" },
                         download: "https://www.mediafire.com/file/m3y4126aojbv3vt/Cubone.cpmmodel/file",
                         kofi: "https://ko-fi.com/serhansolo",
@@ -423,7 +450,7 @@
                         description: "A small Minecraft Player Model pack of the FNaF 1 animatronics + Crying Child.",
                         tag: "6 Skins",
                         color: "fnaf",
-                        ratings: { pegi: "12", esrb: "T", minAge: 12 },
+                        ratings: { pegi: "12", esrb: "T" },
                         media: { type: "image", src: "https://i.ibb.co/KxfX6H0h/d4cbab8b-bd67-486e-afcb-5e5f8abe0960-fnafingrender1.png" },
                         download: "https://www.mediafire.com/file/xx5h47oxmqbv6e7/FNaF+1+Pack.zip/file",
                         kofi: "https://ko-fi.com/inkyinkylillylilly/",
@@ -444,7 +471,7 @@
                         description: "The mischievous rabbit from The Amazing Digital Circus.",
                         tag: "Standalone",
                         color: "tadc",
-                        ratings: { pegi: "7", esrb: "E10+", minAge: 7 },
+                        ratings: { pegi: "7", esrb: "E10+" },
                         media: { type: "image", src: "https://i.ibb.co/ksh4SBGy/image.png" },
                         download: "https://www.mediafire.com/file/rtcou46m45p1icg/Jax.cpmproject/file",
                         discord: "https://discord.com/users/866480501959426079",
@@ -457,7 +484,7 @@
                         description: "The anxious chess piece from The Amazing Digital Circus.",
                         tag: "Standalone",
                         color: "tadc",
-                        ratings: { pegi: "7", esrb: "E10+", minAge: 7 },
+                        ratings: { pegi: "7", esrb: "E10+" },
                         media: { type: "image", src: "https://i.ibb.co/8gLtmZkx/image.png" },
                         download: "https://www.mediafire.com/file/uoj8civyjwtfatu/Kinger.cpmproject/file",
                         discord: "https://discord.com/users/866480501959426079",
@@ -470,7 +497,7 @@
                         description: "The ringmaster AI from The Amazing Digital Circus.",
                         tag: "Standalone",
                         color: "tadc",
-                        ratings: { pegi: "7", esrb: "E10+", minAge: 7 },
+                        ratings: { pegi: "7", esrb: "E10+" },
                         media: { type: "image", src: "https://i.ibb.co/Rpszcsts/image.png" },
                         download: "https://www.mediafire.com/file/j3p8gnqkvm4tn6f/Caine.cpmproject/file",
                         discord: "https://discord.com/users/866480501959426079",
@@ -490,7 +517,7 @@
                         description: "Hello everyone!<3 I wanted to make a skin about frieren. This is my first project, so please don't judge me too harshly.",
                         tag: "Standalone",
                         color: "anime",
-                        ratings: { pegi: "7", esrb: "E10+", minAge: 7 }, // Frieren updated to PEGI 7
+                        ratings: { pegi: "7", esrb: "E10+" },
                         media: { type: "image", src: "https://i.ibb.co/fzRM61sH/image.png" },
                         download: "https://www.mediafire.com/file/hleplx3bssznf70/Frieren_beta_1.1.cpmproject/file",
                         discord: "https://discord.com/users/1188872755811201087",
@@ -511,7 +538,7 @@
                         description: "spoOOoOoky- well, not so much, actually",
                         tag: "Standalone",
                         color: "fortnite",
-                        ratings: { pegi: "12", esrb: "T", minAge: 12 },
+                        ratings: { pegi: "12", esrb: "T" },
                         media: { type: "image", src: "https://i.ibb.co/gN5jxFX/image.png" },
                         download: "https://www.mediafire.com/file/pnfjdsjlkf6zeck/spicecat.cpmproject/file",
                         discord: "https://discord.com/users/642907903602458688",
@@ -535,7 +562,7 @@
                         description: "A detailed shrimp model for your underwater adventures.",
                         tag: "Standalone",
                         color: "wildlife",
-                        ratings: { pegi: "3", esrb: "E", minAge: 3 },
+                        ratings: { pegi: "3", esrb: "E" },
                         media: { type: "image", src: "https://i.ibb.co/whvbrZYW/image.png" },
                         download: "https://www.mediafire.com/file/4j8cgcghxrlaxch/Shrimp.cpmmodel/file",
                         discord: "https://discord.com/users/564227330462056469",
@@ -544,6 +571,7 @@
                 ]
             }
         ];
+
         // === Render Logic ===
 
         function renderNavigation() {
@@ -593,8 +621,6 @@
         }
 
         function createPackCard(pack) {
-            // No restriction logic anymore
-            
             // Media Area
             let mediaHtml = '';
             if (pack.media.type === 'video') {
@@ -726,6 +752,7 @@
             `;
         }
 
+
         // === Interactions ===
 
         function showPreview(packId, imageUrl) {
@@ -759,7 +786,7 @@
             }
         }
 
-        // Initialize
+        // Initialize (Wait for Age Gate)
         window.addEventListener('load', () => {
             renderContent();
             renderNavigation();
